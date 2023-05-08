@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <!-- <header>
     <div class="flex">
       <a href="#" id="logo"><h1>HRY</h1></a>
       <nav id="menu">
@@ -26,9 +26,37 @@
         </div>
       </nav>
     </div>
-  </header>
+  </header> -->
   <main>
     <section id="home">
+      <header>
+        <div class="flex">
+          <a href="#" id="logo"><h1>HRY</h1></a>
+          <nav id="menu">
+            <div class="pc">
+              <ul>
+                <li v-for="menu in menuData.menuList" :key="menu.text">
+                  <a :href="menu.path">{{ menu.text }}</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mobile">
+              <div class="button" @click="clickMobileBtn">
+                <span v-for="idx in 3" :key="idx"></span>
+              </div>
+
+              <div class="menuSide">
+                <ul>
+                  <li v-for="menu in menuData.menuList" :key="menu.text" @click="clickMobileMenu">
+                    <a :href="menu.path">{{ menu.text }}</a>
+                  </li>
+                </ul>
+                <div id="logo"><h1>HRY</h1></div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
       <article class="homeTitle">
         <div class="mainImg">
           <div class="flex">
@@ -301,7 +329,7 @@ body {
 }
 
 header {
-  margin: 20px 30px;
+  padding: 20px 30px;
 }
 header #logo {
 }
@@ -425,9 +453,9 @@ header #menu .mobile .menuSide #logo h1 {
 main {
 }
 main #home {
-  font-family: "Italiana", serif;
 }
 main #home .homeTitle {
+  font-family: "Italiana", serif;
   position: relative;
   height: 100%;
 }
