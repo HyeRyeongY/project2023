@@ -28,7 +28,7 @@
     </div>
   </header> -->
   <main>
-    <section id="home">
+    <section ref="home" id="home">
       <header>
         <div class="flex">
           <a href="#" id="logo"><h1>HRY</h1></a>
@@ -41,7 +41,10 @@
               </ul>
             </div>
             <div class="mobile" :class="{ active: menuData.mobileMenu }">
-              <div class="button" @click="menuData.mobileMenu = !menuData.mobileMenu">
+              <div
+                class="button"
+                @click="menuData.mobileMenu = !menuData.mobileMenu"
+              >
                 <span v-for="idx in 3" :key="idx"></span>
               </div>
 
@@ -64,7 +67,11 @@
       <article class="homeTitle">
         <div class="mainImg">
           <div class="flex">
-            <img :src="require(`@/assets/images/main/home_1.jpg`)" alt="home1" class="home1" />
+            <img
+              :src="require(`@/assets/images/main/home_1.jpg`)"
+              alt="home1"
+              class="home1"
+            />
             <img
               :src="require(`@/assets/images/main/home_1-1.jpg`)"
               alt="home1-1"
@@ -83,20 +90,32 @@
         <div class="flex">
           <div class="introduce introduce1">
             <span class="subject">
-              Life is a continuation of learning,<br />and the excitement in it.<br />
+              Life is a continuation of learning,<br />and the excitement in
+              it.<br />
             </span>
           </div>
-          <img :src="require(`@/assets/images/main/home_2.jpg`)" alt="home2" class="home2" />
+          <img
+            :src="require(`@/assets/images/main/home_2.jpg`)"
+            alt="home2"
+            class="home2"
+          />
         </div>
 
         <div class="flex">
-          <img :src="require(`@/assets/images/main/home_2-1.jpg`)" alt="home2-1" class="home2-1" />
+          <img
+            :src="require(`@/assets/images/main/home_2-1.jpg`)"
+            alt="home2-1"
+            class="home2-1"
+          />
           <div class="introduce introduce2 intro2">
-            <span class="subject"> Communication and collaboration.<br /> </span>
+            <span class="subject">
+              Communication and collaboration.<br />
+            </span>
           </div>
           <div class="introduce introduce3 intro2">
             <span class="subject">
-              2 years of experience in starting a business,<br />feeling responsible.<br />
+              2 years of experience in starting a business,<br />feeling
+              responsible.<br />
             </span>
           </div>
         </div>
@@ -108,16 +127,24 @@
               자기소개서 전문 읽기</a
             >
           </div>
-          <img :src="require(`@/assets/images/main/home_2-2.jpg`)" alt="home2-2" class="home2-2" />
+          <img
+            :src="require(`@/assets/images/main/home_2-2.jpg`)"
+            alt="home2-2"
+            class="home2-2"
+          />
         </div>
       </article>
     </section>
 
-    <section id="About" class="wrap scroll">
+    <section ref="About" id="About" class="wrap scroll">
       <div class="flex info">
         <div>
           <div class="about">About</div>
-          <img :src="require(`@/assets/images/main/page01_1.jpg`)" alt="page01_1" class="infoImg" />
+          <img
+            :src="require(`@/assets/images/main/page01_1.jpg`)"
+            alt="page01_1"
+            class="infoImg"
+          />
         </div>
 
         <div class="infoText">
@@ -157,7 +184,9 @@
               <li>
                 <div class="name">2019-2021</div>
                 <div class="content">
-                  YoungYouAre studio<br /><span class="small">(media art project team)</span>
+                  YoungYouAre studio<br /><span class="small"
+                    >(media art project team)</span
+                  >
                 </div>
               </li>
               <li>
@@ -230,21 +259,35 @@
       </div>
     </section>
 
-    <section id="Portfolio" class="scroll">
+    <section ref="Portfolio" id="Portfolio" class="scroll">
       <div class="wrap">
         <div class="portfolio">Portfolio</div>
       </div>
     </section>
 
-    <section id="Contact" class="scroll">
+    <section ref="Contact" id="Contact" class="scroll">
       <div class="wrap">
         <div class="contact">Contact</div>
 
-        <form action="./mail/mail.php" method="post" onsubmit="return send(this);">
+        <form
+          action="./mail/mail.php"
+          method="post"
+          onsubmit="return send(this);"
+        >
           <ul class="grid">
             <li>
-              <input type="text" name="name" placeholder="NAME" class="mailBox" />
-              <input type="text" name="email" placeholder="EMAIL" class="mailBox" />
+              <input
+                type="text"
+                name="name"
+                placeholder="NAME"
+                class="mailBox"
+              />
+              <input
+                type="text"
+                name="email"
+                placeholder="EMAIL"
+                class="mailBox"
+              />
               <input type="text" name="tel" placeholder="TEL" class="mailBox" />
             </li>
             <li>
@@ -285,12 +328,24 @@ export default {
       mobileMenu: false,
     });
 
+    // 스크롤 위치
+    function getHeightInfo() {
+      let scrollY = this.$refs.About;
+      console.log("스크롤 위치", scrollY);
+    }
+
     // 스크롤 맨 위로 실행 함수
-    const scrollTop = () => {
+    function scrollTop() {
       window.scrollTo(0, 0);
-    };
+    }
+
+    onMounted(() => {
+      // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
+      document.addEventListener("scroll", getHeightInfo);
+    });
     return {
       menuData,
+      getHeightInfo,
       scrollTop,
     };
   },
@@ -306,8 +361,10 @@ export default {
   src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
   src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
       format("embedded-opentype"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff") format("woff"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf") format("truetype");
+    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
+      format("woff"),
+    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
+      format("truetype");
 }
 
 body {
@@ -567,6 +624,9 @@ main {
           position: relative;
           &:hover {
             padding-right: 45px;
+            &:after {
+              opacity: 1;
+            }
           }
           &:after {
             content: "⇢";
@@ -576,9 +636,6 @@ main {
             transform: translateY(-50%);
             opacity: 0;
             transition: opacity 0.5s;
-          }
-          &:hover&:after {
-            opacity: 1;
           }
         }
       }
