@@ -1,0 +1,43 @@
+[
+  {
+    "name": "PROFILE",
+    "list": [
+      { "id": "NAME", "content": "윤혜령" },
+      { "id": "AGES", "content": "26 (1998)" },
+      { "id": "ADDRESS", "content": "부산광역시" },
+      { "id": "SPECIALITY", "content": "악기연주, 드로잉" }
+    ]
+  },
+  {
+    "name": "STUDY & EXPERIENCE",
+    "list": [
+      {
+        "content": "더조은컴퓨터아카데미",
+        "detail": "웹퍼블리싱, 반응형웹디자인 포트폴리오 과정 수료",
+        "period": "2021.05-09"
+      },
+      {
+        "content": "YoungYouAre studio",
+        "detail": "media art project team",
+        "period": "2019-2021"
+      },
+      { "content": "동서대학교 디지털콘텐츠학부", "period": "2017.03-2022.2" }
+    ]
+  },
+  {
+    "name": "LICENSE",
+    "list": [
+      { "content": "웹 디자인 기능사", "period": "2021.09" },
+      { "content": "GTQ그래픽기술자격 2급", "period": "2016.03" }
+    ]
+  },
+  {
+    "name": "SKILL",
+    "list": [
+      { "lang": "HTML", "percent": 90 },
+      { "lang": "CSS", "percent": 85 },
+      { "lang": "JavaScript", "percent": 70 },
+      { "lang": "VUE", "percent": 65 }
+    ]
+  }
+]
