@@ -122,139 +122,45 @@
 
         <div class="infoText">
           <div class="list">
-            <h2 class="title">PROFILE</h2>
-            <ul>
-              <li>
-                <div class="name">NAME</div>
-                <div class="content">윤혜령</div>
-              </li>
-              <li>
-                <div class="name">AGES</div>
-                <div class="content">26 (1998)</div>
-              </li>
-              <li>
-                <div class="name">ADDRESS</div>
-                <div class="content">부산광역시</div>
-              </li>
-              <li>
-                <div class="name">SPECIALITY</div>
-                <div class="content">드로잉, 악기연주</div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="list">
-            <h2 class="title">STUDY & EXPERIENCE</h2>
-            <ul>
-              <li>
-                <div class="name">2021.05-09</div>
-                <div class="content">
-                  더조은컴퓨터아카데미<br /><span class="small"
-                    >(웹퍼블리싱, 반응형웹디자인 포트폴리오 과정 수료)</span
-                  >
+            <div v-for="item in aboutData" :key="item.name">
+              <h2 class="title">{{ item.name }}</h2>
+              <template v-if="item.name !== 'SKILL'">
+                <ul>
+                  <li v-for="(list, idx) in item.list" :key="idx">
+                    <div class="name">{{ list.id ? list.id : list.period ? list.period : "" }}</div>
+                    <div class="content">
+                      {{ list.content ? list.content : "" }} <br />
+                      <span v-if="list.detail" class="small">{{ "(" + list.detail + ")" }}</span>
+                    </div>
+                  </li>
+                </ul>
+              </template>
+              <!-- skill -->
+              <template v-else>
+                <div class="skillGrp">
+                  <ul class="skill flex">
+                    <li v-for="(list, idx) in item.list" :key="idx">
+                      <ul class="horiz">
+                        <li>
+                          <div class="numAnimation" :percent="list.percent">0<span>%</span></div>
+                        </li>
+                        <li>
+                          <div class="lang">{{ list.lang }}</div>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
-              </li>
-              <li>
-                <div class="name">2019-2021</div>
-                <div class="content">
-                  YoungYouAre studio<br /><span class="small">(media art project team)</span>
-                </div>
-              </li>
-              <li>
-                <div class="name">2017.03-2022.02</div>
-                <div class="content">동서대학교 디지털콘텐츠학부</div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="list">
-            <h2 class="title">LICENSE</h2>
-            <ul>
-              <li>
-                <div class="name">2021.09</div>
-                <div class="content">웹 디자인 기능사</div>
-              </li>
-              <li>
-                <div class="name">2016.03</div>
-                <div class="content">GTQ그래픽기술자격 2급</div>
-              </li>
-            </ul>
+              </template>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="skillGrp">
-        <div class="title">SKILL</div>
-        <ul class="skill flex">
-          <li>
-            <ul class="horiz">
-              <li>
-                <div class="numAnimation" percent="90">0<span>%</span></div>
-              </li>
-              <li>
-                <div class="lang">HTML</div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul class="horiz">
-              <li>
-                <div class="numAnimation" percent="75">0<span>%</span></div>
-              </li>
-              <li>
-                <div class="lang">CSS</div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul class="horiz">
-              <li>
-                <div class="numAnimation" percent="55">0<span>%</span></div>
-              </li>
-              <li>
-                <div class="lang">JavaScript</div>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul class="horiz">
-              <li>
-                <div class="numAnimation" percent="65">0<span>%</span></div>
-              </li>
-              <li>
-                <div class="lang">VUE</div>
-              </li>
-            </ul>
-          </li>
-        </ul>
       </div>
     </section>
 
     <section ref="Portfolio" id="Portfolio" class="scroll">
       <div class="wrap">
         <div class="portfolio">Portfolio</div>
-      </div>
-    </section>
-
-    <section ref="Contact" id="Contact" class="scroll">
-      <div class="wrap">
-        <div class="contact">Contact</div>
-
-        <form action="./mail/mail.php" method="post" onsubmit="return send(this);">
-          <ul class="grid">
-            <li>
-              <input type="text" name="name" placeholder="NAME" class="mailBox" />
-              <input type="text" name="email" placeholder="EMAIL" class="mailBox" />
-              <input type="text" name="tel" placeholder="TEL" class="mailBox" />
-            </li>
-            <li>
-              <textarea name="text" placeholder="CONTENTS"></textarea>
-            </li>
-            <li>
-              <input type="submit" value="SEND MAIL" class="sendButton" />
-            </li>
-          </ul>
-        </form>
       </div>
     </section>
 
@@ -272,9 +178,12 @@
   </footer>
 </template>
 <script>
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted, onCreated } from "vue";
+import data from "./data/about.json";
+
 export default {
   setup() {
+    const aboutData = data;
     const menuData = reactive({
       menuList: [
         { text: "Home", path: "#home" },
@@ -283,27 +192,55 @@ export default {
         { text: "Contact", path: "#Contact" },
       ],
       mobileMenu: false,
+      aboutH: null,
+      nowH: null,
     });
-
     // 스크롤 위치
     function getHeightInfo() {
-      let scrollY = this.$refs.About;
-      console.log("스크롤 위치", scrollY);
+      this.aboutH = document.getElementById("About").clientHeight;
+      this.nowH = window.scrollY;
+      let topBtn = document.querySelector(".topBtn");
+      if (this.aboutH < this.nowH) {
+        topBtn.className = "topBtn under";
+        document.body.style = "transition: all .28s ease-in-out; background-color: #64574d";
+      } else {
+        topBtn.className = "topBtn";
+        document.body.style = "transition: all .28s ease-in-out; background-color: #efe8df";
+      }
+    }
+    let numAnimation = document.querySelectorAll(".numAnimation");
+
+    function changNum(idx) {
+      let num = 0;
+      let targetNum = numAnimation[idx].getAttribute("percent");
+      setTimeout(function () {
+        let timer = setInterval(function () {
+          ++num;
+          numAnimation[idx].innerText = num + "%";
+          if (num == targetNum) {
+            clearInterval(timer);
+          }
+        }, 40);
+      }, 2000);
+    }
+    for (var i = 0; i < numAnimation.length; i++) {
+      changNum(i);
     }
 
     // 스크롤 맨 위로 실행 함수
     function scrollTop() {
       window.scrollTo(0, 0);
     }
-
     onMounted(() => {
       // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
       document.addEventListener("scroll", getHeightInfo);
     });
     return {
+      aboutData,
       menuData,
       getHeightInfo,
       scrollTop,
+      changNum,
     };
   },
 };
@@ -624,6 +561,7 @@ main {
             margin-bottom: 0px;
           }
           .title {
+            padding-top: 20px;
             text-align: left;
             font-size: 26px;
             letter-spacing: 1.2px;
@@ -800,6 +738,7 @@ main .topBtn {
   position: fixed;
   bottom: 50px;
   right: 50px;
+
   .scrollToTop {
     width: 50px;
     height: 50px;
@@ -810,11 +749,6 @@ main .topBtn {
     color: #efe8df;
     border: none;
     transition: all 0.5s;
-  }
-  &:hover {
-    .scrollToTop {
-      cursor: pointer;
-    }
   }
   .btnText {
     font-size: 16px;
@@ -828,7 +762,19 @@ main .topBtn {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
   }
+  &.under {
+    .scrollToTop {
+      background-color: #efe8df;
+      color: #64574d;
+    }
+    .btnText {
+      color: #efe8df;
+    }
+  }
   &:hover {
+    .scrollToTop {
+      cursor: pointer;
+    }
     .btnText {
       opacity: 1;
     }
