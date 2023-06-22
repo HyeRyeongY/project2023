@@ -1,17 +1,19 @@
 <template>
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <Main />
+  <!-- <Main /> -->
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
-import Main from "./components/Main/Index.vue";
+// import Main from "./components/default/Index.vue";
 
 export default {
   name: "App",
   components: {
     // HelloWorld,
-    Main,
+    // Main,
   },
 };
 </script>

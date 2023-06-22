@@ -1,32 +1,4 @@
 <template>
-  <!-- <header>
-    <div class="flex">
-      <a href="#" id="logo"><h1>HRY</h1></a>
-      <nav id="menu">
-        <div class="pc">
-          <ul>
-            <li v-for="menu in menuData.menuList" :key="menu.text">
-              <a :href="menu.path">{{ menu.text }}</a>
-            </li>
-          </ul>
-        </div>
-        <div class="mobile">
-          <div class="button" @click="clickMobileBtn">
-            <span v-for="idx in 3" :key="idx"></span>
-          </div>
-
-          <div class="menuSide">
-            <ul>
-              <li v-for="menu in menuData.menuList" :key="menu.text" @click="clickMobileMenu">
-                <a :href="menu.path">{{ menu.text }}</a>
-              </li>
-            </ul>
-            <div id="logo"><h1>HRY</h1></div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header> -->
   <main>
     <section ref="home" id="home">
       <header>
@@ -178,7 +150,7 @@
   </footer>
 </template>
 <script>
-import { reactive, onMounted, onCreated } from "vue";
+import { reactive, onMounted } from "vue";
 import data from "./data/about.json";
 
 export default {
