@@ -4,7 +4,7 @@
       <section ref="home" id="home">
         <header>
           <div class="flex">
-            <a href="#" id="logo"><h1>HRY</h1></a>
+            <a href="#" id="logo"><h1>yoonhr</h1></a>
             <nav id="menu">
               <div class="pc">
                 <ul>
@@ -28,7 +28,7 @@
                       <a :href="menu.path">{{ menu.text }}</a>
                     </li>
                   </ul>
-                  <div id="logo"><h1>HRY</h1></div>
+                  <div id="logo"><h1>yoonhr</h1></div>
                 </div>
               </div>
             </nav>
@@ -69,12 +69,10 @@
               class="home2-1"
             />
             <div class="introduce introduce2 intro2">
-              <span class="subject"> Communication and collaboration.<br /> </span>
+              <span class="subject">Just do it.<br /> </span>
             </div>
             <div class="introduce introduce3 intro2">
-              <span class="subject">
-                2 years of experience in starting a business,<br />feeling responsible.<br />
-              </span>
+              <span class="subject">I can do it!</span>
             </div>
           </div>
 
@@ -254,9 +252,12 @@ header {
   padding: 20px 30px;
   #logo {
     h1 {
-      width: 100px;
+      font-family: "Italiana", serif;
+      font-style: italic;
+      // width: 100px;
       height: 50px;
-      border: 2px solid #64574d;
+      padding: 0 20px;
+      border: 3px solid #64574d;
       border-radius: 100%;
       font-size: 35px;
       font-weight: bold;
@@ -358,7 +359,14 @@ header #menu {
               a {
                 width: 100%;
                 color: #a59176;
-                text-decoration: underline;
+                position: relative;
+                // text-decoration: underline;
+                &::before {
+                  content: "*";
+                  position: absolute;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
               }
             }
           }
