@@ -4,8 +4,7 @@
     "list": [
       { "id": "NAME", "content": "윤혜령" },
       { "id": "AGES", "content": "26 (1998)" },
-      { "id": "ADDRESS", "content": "부산광역시" },
-      { "id": "SPECIALITY", "content": "악기연주, 드로잉" }
+      { "id": "HOBBY", "content": "악기연주" }
     ]
   },
   {
@@ -29,15 +28,6 @@
     "list": [
       { "content": "웹 디자인 기능사", "period": "2021.09" },
       { "content": "GTQ그래픽기술자격 2급", "period": "2016.03" }
-    ]
-  },
-  {
-    "name": "SKILL",
-    "list": [
-      { "lang": "HTML", "percent": 90 },
-      { "lang": "CSS", "percent": 85 },
-      { "lang": "JavaScript", "percent": 70 },
-      { "lang": "VUE", "percent": 65 }
     ]
   }
 ]

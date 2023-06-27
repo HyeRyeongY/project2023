@@ -1,153 +1,169 @@
 <template>
-  <main>
-    <section ref="home" id="home">
-      <header>
-        <div class="flex">
-          <a href="#" id="logo"><h1>HRY</h1></a>
-          <nav id="menu">
-            <div class="pc">
-              <ul>
-                <li v-for="menu in menuData.menuList" :key="menu.text">
-                  <a :href="menu.path">{{ menu.text }}</a>
-                </li>
-              </ul>
-            </div>
-            <div class="mobile" :class="{ active: menuData.mobileMenu }">
-              <div class="button" @click="menuData.mobileMenu = !menuData.mobileMenu">
-                <span v-for="idx in 3" :key="idx"></span>
-              </div>
-
-              <div class="menuSide">
+  <div class="magazine-page">
+    <main>
+      <section ref="home" id="home">
+        <header>
+          <div class="flex">
+            <a href="#" id="logo"><h1>HRY</h1></a>
+            <nav id="menu">
+              <div class="pc">
                 <ul>
-                  <li
-                    v-for="menu in menuData.menuList"
-                    :key="menu.text"
-                    @click="menuData.mobileMenu = false"
-                  >
+                  <li v-for="menu in menuData.menuList" :key="menu.text">
                     <a :href="menu.path">{{ menu.text }}</a>
                   </li>
                 </ul>
-                <div id="logo"><h1>HRY</h1></div>
               </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-      <article class="homeTitle">
-        <div class="mainImg">
-          <div class="flex">
-            <img :src="require(`@/assets/images/main/home_1.jpg`)" alt="home1" class="home1" />
-            <img
-              :src="require(`@/assets/images/main/home_1-1.jpg`)"
-              alt="home1-1"
-              class="home1-1 media600"
-            />
-          </div>
-        </div>
+              <div class="mobile" :class="{ active: menuData.mobileMenu }">
+                <div class="button" @click="menuData.mobileMenu = !menuData.mobileMenu">
+                  <span v-for="idx in 3" :key="idx"></span>
+                </div>
 
-        <div class="mainText">
-          <div class="developer">Developer<br />who enjoys challenges.</div>
-          <div class="nothing">Nothing ventured,<br />nothing gained.</div>
-        </div>
-      </article>
-
-      <article class="subTitle">
-        <div class="flex">
-          <div class="introduce introduce1">
-            <span class="subject">
-              Life is a continuation of learning,<br />and the excitement in it.<br />
-            </span>
-          </div>
-          <img :src="require(`@/assets/images/main/home_2.jpg`)" alt="home2" class="home2" />
-        </div>
-
-        <div class="flex">
-          <img :src="require(`@/assets/images/main/home_2-1.jpg`)" alt="home2-1" class="home2-1" />
-          <div class="introduce introduce2 intro2">
-            <span class="subject"> Communication and collaboration.<br /> </span>
-          </div>
-          <div class="introduce introduce3 intro2">
-            <span class="subject">
-              2 years of experience in starting a business,<br />feeling responsible.<br />
-            </span>
-          </div>
-        </div>
-
-        <div class="flex">
-          <div class="introduce introduce4">
-            <a target="_blank" class="iLink">
-              <!-- href="https://drive.google.com/file/d/1dng_Z5jGW-TCXOa-kHnMBZH1rBVfOCcP/view?usp=sharing" -->
-              자기소개서 전문 읽기</a
-            >
-          </div>
-          <img :src="require(`@/assets/images/main/home_2-2.jpg`)" alt="home2-2" class="home2-2" />
-        </div>
-      </article>
-    </section>
-
-    <section ref="About" id="About" class="wrap scroll">
-      <div class="flex info">
-        <div>
-          <div class="about">About</div>
-          <img :src="require(`@/assets/images/main/page01_1.jpg`)" alt="page01_1" class="infoImg" />
-        </div>
-
-        <div class="infoText">
-          <div class="list">
-            <div v-for="item in aboutData" :key="item.name">
-              <h2 class="title">{{ item.name }}</h2>
-              <template v-if="item.name !== 'SKILL'">
-                <ul>
-                  <li v-for="(list, idx) in item.list" :key="idx">
-                    <div class="name">{{ list.id ? list.id : list.period ? list.period : "" }}</div>
-                    <div class="content">
-                      {{ list.content ? list.content : "" }} <br />
-                      <span v-if="list.detail" class="small">{{ "(" + list.detail + ")" }}</span>
-                    </div>
-                  </li>
-                </ul>
-              </template>
-              <!-- skill -->
-              <template v-else>
-                <div class="skillGrp">
-                  <ul class="skill flex">
-                    <li v-for="(list, idx) in item.list" :key="idx">
-                      <ul class="horiz">
-                        <li>
-                          <div class="numAnimation" :percent="list.percent">0<span>%</span></div>
-                        </li>
-                        <li>
-                          <div class="lang">{{ list.lang }}</div>
-                        </li>
-                      </ul>
+                <div class="menuSide">
+                  <ul>
+                    <li
+                      v-for="menu in menuData.menuList"
+                      :key="menu.text"
+                      @click="menuData.mobileMenu = false"
+                    >
+                      <a :href="menu.path">{{ menu.text }}</a>
                     </li>
                   </ul>
+                  <div id="logo"><h1>HRY</h1></div>
                 </div>
-              </template>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <article class="homeTitle">
+          <div class="mainImg">
+            <div class="flex">
+              <img :src="require(`@/assets/images/main/home_1.jpg`)" alt="home1" class="home1" />
+              <img
+                :src="require(`@/assets/images/main/home_1-1.jpg`)"
+                alt="home1-1"
+                class="home1-1 media600"
+              />
+            </div>
+          </div>
+
+          <div class="mainText">
+            <div class="developer">Developer<br />who enjoys challenges.</div>
+            <div class="nothing">Nothing ventured,<br />nothing gained.</div>
+          </div>
+        </article>
+
+        <article class="subTitle">
+          <div class="flex">
+            <div class="introduce introduce1">
+              <span class="subject">
+                Life is a continuation of learning,<br />and the excitement in it.<br />
+              </span>
+            </div>
+            <img :src="require(`@/assets/images/main/home_2.jpg`)" alt="home2" class="home2" />
+          </div>
+
+          <div class="flex">
+            <img
+              :src="require(`@/assets/images/main/home_2-1.jpg`)"
+              alt="home2-1"
+              class="home2-1"
+            />
+            <div class="introduce introduce2 intro2">
+              <span class="subject"> Communication and collaboration.<br /> </span>
+            </div>
+            <div class="introduce introduce3 intro2">
+              <span class="subject">
+                2 years of experience in starting a business,<br />feeling responsible.<br />
+              </span>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="introduce introduce4">
+              <a target="_blank" class="iLink">
+                <!-- href="https://drive.google.com/file/d/1dng_Z5jGW-TCXOa-kHnMBZH1rBVfOCcP/view?usp=sharing" -->
+                자기소개서 전문 읽기</a
+              >
+            </div>
+            <img
+              :src="require(`@/assets/images/main/home_2-2.jpg`)"
+              alt="home2-2"
+              class="home2-2"
+            />
+          </div>
+        </article>
+      </section>
+
+      <section ref="About" id="About" class="wrap scroll">
+        <div class="flex info">
+          <div>
+            <div class="about">About</div>
+            <img
+              :src="require(`@/assets/images/main/page01_1.jpg`)"
+              alt="page01_1"
+              class="infoImg"
+            />
+          </div>
+
+          <div class="infoText">
+            <div class="list">
+              <div v-for="item in aboutData" :key="item.name">
+                <h2 class="title">{{ item.name }}</h2>
+                <template v-if="item.name !== 'SKILL'">
+                  <ul>
+                    <li v-for="(list, idx) in item.list" :key="idx">
+                      <div class="name">
+                        {{ list.id ? list.id : list.period ? list.period : "" }}
+                      </div>
+                      <div class="content">
+                        {{ list.content ? list.content : "" }} <br />
+                        <span v-if="list.detail" class="small">{{ "(" + list.detail + ")" }}</span>
+                      </div>
+                    </li>
+                  </ul>
+                </template>
+                <!-- skill -->
+                <template v-else>
+                  <div class="skillGrp">
+                    <ul class="skill flex">
+                      <li v-for="(list, idx) in item.list" :key="idx">
+                        <ul class="horiz">
+                          <li>
+                            <div class="numAnimation" :percent="list.percent">0<span>%</span></div>
+                          </li>
+                          <li>
+                            <div class="lang">{{ list.lang }}</div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </template>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section ref="Portfolio" id="Portfolio" class="scroll">
+      <!-- <section ref="Portfolio" id="Portfolio" class="scroll">
       <div class="wrap">
         <div class="portfolio">Portfolio</div>
       </div>
-    </section>
+    </section> -->
 
-    <div class="topBtn">
-      <span class="btnText">want to see the menu</span>
-      <span class="scrollToTop" @click="scrollTop()">⇡</span>
-    </div>
-  </main>
+      <div class="topBtn">
+        <span class="btnText">want to see the menu</span>
+        <span class="scrollToTop" @click="scrollTop()">⇡</span>
+      </div>
+    </main>
 
-  <footer>
-    <div class="copy">
-      이 페이지는 상업용이 아닌 개인 포트폴리오용으로 제작되었습니다. <br />
-      COPYRIGHTⓒ2022 by HRY. ALL RIGHTS RESERVED
-    </div>
-  </footer>
+    <footer>
+      <div class="copy">
+        이 페이지는 상업용이 아닌 개인 포트폴리오용으로 제작되었습니다. <br />
+        COPYRIGHTⓒ2022 by HRY. ALL RIGHTS RESERVED
+      </div>
+    </footer>
+  </div>
 </template>
 <script>
 import { reactive, onMounted } from "vue";
@@ -169,15 +185,18 @@ export default {
     });
     // 스크롤 위치
     function getHeightInfo() {
-      this.aboutH = document.getElementById("About").clientHeight;
+      this.aboutH = document.getElementById("About").offsetTop;
       this.nowH = window.scrollY;
       let topBtn = document.querySelector(".topBtn");
-      if (this.aboutH < this.nowH) {
+      let page = document.querySelector(".magazine-page");
+      if (this.aboutH - 700 < this.nowH) {
         topBtn.className = "topBtn under";
-        document.body.style = "transition: all .28s ease-in-out; background-color: #64574d";
+        page.className = "magazine-page under";
+        // document.body.style = "transition: all .28s ease-in-out; background-color: #64574d";
       } else {
         topBtn.className = "topBtn";
-        document.body.style = "transition: all .28s ease-in-out; background-color: #efe8df";
+        page.className = "magazine-page";
+        // document.body.style = "transition: all .28s ease-in-out; background-color: #efe8df";
       }
     }
     let numAnimation = document.querySelectorAll(".numAnimation");
@@ -233,25 +252,25 @@ export default {
 
 body {
   font-family: "Raleway", sans-serif;
-  background-color: #efe8df;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
 }
-
+.magazine-page {
+  background-color: #efe8df;
+  transition: all 1s ease;
+  &.under {
+    background-color: #64574d;
+  }
+}
 header {
   padding: 20px 30px;
   #logo {
     h1 {
       width: 100px;
       height: 50px;
-      border: 2px solid white;
+      border: 2px solid #64574d;
       border-radius: 100%;
       font-size: 35px;
       font-weight: bold;
-      color: white;
+      color: #64574d;
       line-height: 47px;
     }
   }
