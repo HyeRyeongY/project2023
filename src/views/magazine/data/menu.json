@@ -1,0 +1,4 @@
+[
+  { "text": "Home", "path": "#home" },
+  { "text": "About", "path": "#About" }
+]

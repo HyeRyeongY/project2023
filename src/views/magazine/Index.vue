@@ -8,22 +8,22 @@
             <nav id="menu">
               <div class="pc">
                 <ul>
-                  <li v-for="menu in menuData.menuList" :key="menu.text">
+                  <li v-for="menu in menuData" :key="menu.text">
                     <a :href="menu.path">{{ menu.text }}</a>
                   </li>
                 </ul>
               </div>
-              <div class="mobile" :class="{ active: menuData.mobileMenu }">
-                <div class="button" @click="menuData.mobileMenu = !menuData.mobileMenu">
+              <div class="mobile" :class="{ active: useData.mobileMenu }">
+                <div class="button" @click="useData.mobileMenu = !useData.mobileMenu">
                   <span v-for="idx in 3" :key="idx"></span>
                 </div>
 
                 <div class="menuSide">
                   <ul>
                     <li
-                      v-for="menu in menuData.menuList"
+                      v-for="menu in menuData"
                       :key="menu.text"
-                      @click="menuData.mobileMenu = false"
+                      @click="useData.mobileMenu = false"
                     >
                       <a :href="menu.path">{{ menu.text }}</a>
                     </li>
@@ -156,29 +156,18 @@
         <span class="scrollToTop" @click="scrollTop()">⇡</span>
       </div>
     </main>
-
-    <footer>
-      <div class="copy">
-        이 페이지는 상업용이 아닌 개인 포트폴리오용으로 제작되었습니다. <br />
-        COPYRIGHTⓒ2022 by HRY. ALL RIGHTS RESERVED
-      </div>
-    </footer>
   </div>
 </template>
 <script>
 import { reactive, onMounted } from "vue";
-import data from "./data/about.json";
+import aboutList from "./data/about.json"; // about 데이터
+import menuList from "./data/menu.json"; // 메뉴 데이터
 
 export default {
   setup() {
-    const aboutData = data;
-    const menuData = reactive({
-      menuList: [
-        { text: "Home", path: "#home" },
-        { text: "About", path: "#About" },
-        { text: "Portfolio", path: "#Portfolio" },
-        { text: "Contact", path: "#Contact" },
-      ],
+    const aboutData = aboutList;
+    const menuData = menuList;
+    const useData = reactive({
       mobileMenu: false,
       aboutH: null,
       nowH: null,
@@ -229,6 +218,7 @@ export default {
     return {
       aboutData,
       menuData,
+      useData,
       getHeightInfo,
       scrollTop,
       changNum,
@@ -298,11 +288,11 @@ header #menu {
       width: 45px;
       height: 45px;
       position: relative;
+      z-index: 999;
       &:hover {
         cursor: pointer;
       }
       span {
-        z-index: 999;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -769,12 +759,6 @@ main .topBtn {
     .btnText {
       opacity: 1;
     }
-  }
-}
-
-footer {
-  .copy {
-    color: #a39c93;
   }
 }
 
