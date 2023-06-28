@@ -12,14 +12,17 @@ const routes = [
         path: "",
         name: "Magazine",
         component: () => import("../views/magazine/Index.vue"),
+        meta: { id: "magazine" },
+      },
+      {
+        path: "/windowsXp",
+        name: "WindowsXp",
+        component: () => import("../views/windowsXp/Index.vue"),
+        meta: { id: "windowsXp" },
       },
     ],
   },
-  {
-    path: "/windowsXp",
-    name: "WindowsXp",
-    component: () => import("../views/windowsXp/Index.vue"),
-  },
+
   // {
   //   path: "/:title", // 이런 식으로 작성하면 동적 라우팅이 가능함 예) $route.params.title
   //   name: "Main",

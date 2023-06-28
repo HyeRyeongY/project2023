@@ -11,7 +11,10 @@
         class="menulist-item btn-text"
         @click="clickBtn(item)"
       >
-        <div class="text">{{ item.text }}</div>
+        <div class="text">
+          {{ item.text }}
+          <span v-if="state.nowPath === item.id" class="now">Now!</span>
+        </div>
       </li>
     </ul>
     <!-- <span class="btnText">want to see the menu</span> -->
@@ -28,23 +31,28 @@
 </template>
 <script>
 import { reactive, toRef } from "vue";
+import { useRouter, useRoute } from "vue-router";
 export default {
   props: {
     data: Array,
   },
   setup(props) {
+    let router = useRouter();
+    let route = useRoute();
     const itemList = toRef(props, "data");
     let state = reactive({
       activeMenu: false,
+      nowPath: route.meta.id,
     });
 
     function clickBtn(item) {
-      console.log("click", item.id, item.path);
       if (item.id === "scrollTop") {
         this.scrollTop();
       } else {
-        document.querySelector(".");
-        this.$router.push(item.path);
+        // console.log("router", route.meta.id);
+        router.push(item.path);
+        state.nowPath = item.id;
+        console.log("click", state.nowPath);
       }
     }
 
@@ -73,6 +81,7 @@ export default {
   position: fixed;
   bottom: 30px;
   right: 30px;
+  z-index: 10;
 
   .menulist {
     position: absolute;
@@ -93,7 +102,18 @@ export default {
       opacity: 1;
     }
     .menulist-item {
-      padding: 4px 0;
+      padding: 4px 8px;
+      width: 100%;
+      position: relative;
+      .text {
+        text-align: right;
+      }
+      .now {
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        transform: translateY(-50%);
+      }
       &:hover {
         cursor: pointer;
         background-color: #64574d;
