@@ -6,6 +6,6 @@
   </div>
 </template>
 <script setup>
-import Footer from "@/components/layout/Atype/Footer";
+import Footer from "./components/Atype/Footer";
 </script>
 <style lang="scss"></style>

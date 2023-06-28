@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 // import Default from "@/components/default/Index.vue";
-import Atype from "./layouts/Atype"; // Atype
+import Atype from "@/layout/Atype"; // Atype
 
 const routes = [
   {

@@ -13,19 +13,23 @@
       {
         "content": "(주)티허브",
         "detail": "웹 퍼블리셔",
-        "period": "2022.3-현재"
+        "period": "2022.03 ~ Present"
       },
       {
         "content": "더조은컴퓨터아카데미",
         "detail": "웹 퍼블리싱 과정 수료",
-        "period": "2021.05-09"
+        "period": "2021.05 ~ 2021.09"
       },
       {
         "content": "YoungYouAre studio",
         "detail": "media art project team",
-        "period": "2019-2021"
+        "period": "2019 ~ 2021"
       },
-      { "content": "동서대학교 디지털콘텐츠학부", "period": "2017.03-2022.2" }
+      {
+        "content": "동서대학교",
+        "detail": "디지털콘텐츠학부 VFX 전공",
+        "period": "2017.03 ~ 2022.02"
+      }
     ]
   },
   {
