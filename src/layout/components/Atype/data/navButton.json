@@ -1,0 +1,5 @@
+[
+  { "id": "scrollTop", "text": "scroll to top" },
+  { "id": "magazine", "text": "magazine", "path": "/" },
+  { "id": "windowsXp", "text": "windows XP", "path": "/windowsXp" }
+]

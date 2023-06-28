@@ -10,10 +10,15 @@ const routes = [
     children: [
       {
         path: "",
-        name: "Main",
+        name: "Magazine",
         component: () => import("../views/magazine/Index.vue"),
       },
     ],
+  },
+  {
+    path: "/windowsXp",
+    name: "WindowsXp",
+    component: () => import("../views/windowsXp/Index.vue"),
   },
   // {
   //   path: "/:title", // 이런 식으로 작성하면 동적 라우팅이 가능함 예) $route.params.title

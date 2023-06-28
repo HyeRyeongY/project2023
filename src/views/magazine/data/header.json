@@ -1,0 +1,4 @@
+[
+  { "id": "home", "text": "Home", "path": "#Home" },
+  { "id": "about", "text": "About", "path": "#About" }
+]

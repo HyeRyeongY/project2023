@@ -168,18 +168,13 @@
         <div class="portfolio">Portfolio</div>
       </div>
     </section> -->
-
-      <div class="topBtn">
-        <span class="btnText">want to see the menu</span>
-        <span class="scrollToTop" @click="scrollTop()">⇡</span>
-      </div>
     </main>
   </div>
 </template>
 <script>
 import { reactive, onMounted } from "vue";
 import aboutList from "./data/about.json"; // about 데이터
-import menuList from "./data/menu.json"; // 메뉴 데이터
+import menuList from "./data/header.json"; // 메뉴 데이터
 
 export default {
   setup() {
@@ -194,14 +189,13 @@ export default {
     function getHeightInfo() {
       this.aboutH = document.getElementById("About").offsetTop;
       this.nowH = window.scrollY;
-      let topBtn = document.querySelector(".topBtn");
+      // let topBtn = document.querySelector(".topBtn");
       let page = document.querySelector(".magazine-page");
       if (this.aboutH - 700 < this.nowH) {
-        topBtn.className = "topBtn under";
+        // topBtn.className = "topBtn under";
         page.className = "magazine-page under";
-        // document.body.style = "transition: all .28s ease-in-out; background-color: #64574d";
       } else {
-        topBtn.className = "topBtn";
+        // topBtn.className = "topBtn";
         page.className = "magazine-page";
         // document.body.style = "transition: all .28s ease-in-out; background-color: #efe8df";
       }
@@ -225,10 +219,6 @@ export default {
       changNum(i);
     }
 
-    // 스크롤 맨 위로 실행 함수
-    function scrollTop() {
-      window.scrollTo(0, 0);
-    }
     onMounted(() => {
       // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
       document.addEventListener("scroll", getHeightInfo);
@@ -238,7 +228,6 @@ export default {
       menuData,
       useData,
       getHeightInfo,
-      scrollTop,
       changNum,
     };
   },
@@ -748,53 +737,6 @@ input::placeholder {
 }
 textarea::placeholder {
   color: #fff;
-}
-
-main .topBtn {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-
-  .scrollToTop {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 35px;
-    padding: 5px 15px;
-    background-color: #64574d;
-    color: #efe8df;
-    border: none;
-    transition: all 0.5s;
-  }
-  .btnText {
-    font-size: 16px;
-    color: #64574d;
-    padding-right: 10px;
-    vertical-align: bottom;
-    opacity: 0;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-  }
-  &.under {
-    .scrollToTop {
-      background-color: #efe8df;
-      color: #64574d;
-    }
-    .btnText {
-      color: #efe8df;
-    }
-  }
-  &:hover {
-    .scrollToTop {
-      cursor: pointer;
-    }
-    .btnText {
-      opacity: 1;
-    }
-  }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 1600px) {
