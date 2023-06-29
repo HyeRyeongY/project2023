@@ -14,10 +14,7 @@
                 </ul>
               </div>
               <div class="mobile" :class="{ active: useData.mobileMenu }">
-                <div
-                  class="button"
-                  @click="useData.mobileMenu = !useData.mobileMenu"
-                >
+                <div class="button" @click="useData.mobileMenu = !useData.mobileMenu">
                   <span v-for="idx in 3" :key="idx"></span>
                 </div>
 
@@ -40,11 +37,7 @@
         <article class="homeTitle">
           <div class="mainImg">
             <div class="flex">
-              <img
-                :src="require(`@/assets/images/main/home_1.jpg`)"
-                alt="home1"
-                class="home1"
-              />
+              <img :src="require(`@/assets/images/main/home_1.jpg`)" alt="home1" class="home1" />
               <img
                 :src="require(`@/assets/images/main/home_1-1.jpg`)"
                 alt="home1-1"
@@ -63,15 +56,10 @@
           <div class="flex">
             <div class="introduce introduce1">
               <span class="subject">
-                Life is a continuation of learning,<br />and the excitement in
-                it.<br />
+                Life is a continuation of learning,<br />and the excitement in it.<br />
               </span>
             </div>
-            <img
-              :src="require(`@/assets/images/main/home_2.jpg`)"
-              alt="home2"
-              class="home2"
-            />
+            <img :src="require(`@/assets/images/main/home_2.jpg`)" alt="home2" class="home2" />
           </div>
 
           <div class="flex">
@@ -121,11 +109,7 @@
                 <h2 class="title">{{ item.name }}</h2>
                 <template v-if="item.name !== 'SKILL'">
                   <ul>
-                    <li
-                      v-for="(list, idx) in item.list"
-                      :key="idx"
-                      class="info-list"
-                    >
+                    <li v-for="(list, idx) in item.list" :key="idx" class="info-list">
                       <div class="name">
                         {{ list.id ? list.id : list.period ? list.period : "" }}
                       </div>
@@ -145,9 +129,7 @@
                       <li v-for="(list, idx) in item.list" :key="idx">
                         <ul class="horiz">
                           <li>
-                            <div class="numAnimation" :percent="list.percent">
-                              0<span>%</span>
-                            </div>
+                            <div class="numAnimation" :percent="list.percent">0<span>%</span></div>
                           </li>
                           <li>
                             <div class="lang">{{ list.lang }}</div>
@@ -172,7 +154,7 @@
   </div>
 </template>
 <script>
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted, onBeforeUnmount } from "vue";
 import aboutList from "./data/about.json"; // about 데이터
 import menuList from "./data/header.json"; // 메뉴 데이터
 
@@ -223,6 +205,9 @@ export default {
       // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
       document.addEventListener("scroll", getHeightInfo);
     });
+    onBeforeUnmount(() => {
+      document.removeEventListener("scroll", getHeightInfo);
+    });
     return {
       aboutData,
       menuData,
@@ -243,10 +228,8 @@ export default {
   src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
   src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
       format("embedded-opentype"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
-      format("woff"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
-      format("truetype");
+    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff") format("woff"),
+    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf") format("truetype");
 }
 
 body {
@@ -268,7 +251,7 @@ header {
       // width: 100px;
       height: 50px;
       padding: 0 20px;
-      border: 3px solid #64574d;
+      // border: 3px solid #64574d;
       border-radius: 100%;
       font-size: 35px;
       font-weight: bold;

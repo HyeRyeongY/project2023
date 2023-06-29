@@ -2,7 +2,7 @@
   <footer>
     <div class="copy">
       이 페이지는 상업용이 아닌 개인 포트폴리오용으로 제작되었습니다. <br />
-      COPYRIGHTⓒ2022 by HRY. ALL RIGHTS RESERVED
+      COPYRIGHTⓒ2023 by yoonhyeryeong. ALL RIGHTS RESERVED
     </div>
   </footer>
 </template>

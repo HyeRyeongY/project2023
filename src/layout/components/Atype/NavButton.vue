@@ -1,10 +1,11 @@
 <template>
   <div
     class="topBtn"
+    @click="clickMore()"
     @mouseenter="btnCursor('enter')"
     @mouseleave="btnCursor('leave')"
   >
-    <ul class="menulist" :class="{ active: state.activeMenu }">
+    <ul class="menulist" :class="{ active: state.activeMenu || state.clickOpen }">
       <li
         v-for="(item, idx) in itemList"
         :key="idx"
@@ -18,20 +19,23 @@
       </li>
     </ul>
     <!-- <span class="btnText">want to see the menu</span> -->
-    <div
-      class="scrollToTop"
-      :class="{ active: state.activeMenu }"
-      @click="scrollTop()"
-    >
+    <div class="scrollToTop" :class="{ active: state.activeMenu }" @click="scrollTop()">
       <!-- ⇡ -->
       <!-- ⋮ -->
+      <!-- <template v-if="state.nowPath === 'windowsXP'">
+        <img src="@/assets/images/windowsXP/wXPLogo.png" class="start-logo" />시작
+      </template>
+      <template v-else> -->
       <span v-for="dot in 3" :key="dot" class="dot"></span>
+      <!-- </template> -->
     </div>
   </div>
 </template>
 <script>
 import { reactive, toRef } from "vue";
+// onMounted
 import { useRouter, useRoute } from "vue-router";
+// onBeforeRouteUpdate, onBeforeRouteLeave
 export default {
   props: {
     data: Array,
@@ -42,20 +46,27 @@ export default {
     const itemList = toRef(props, "data");
     let state = reactive({
       activeMenu: false,
+      clickOpen: false,
       nowPath: route.meta.id,
     });
 
+    //
+    function clickMore() {
+      state.clickOpen = !state.activeMenu ? false : true;
+    }
+
+    // 버튼 클릭
     function clickBtn(item) {
       if (item.id === "scrollTop") {
         this.scrollTop();
       } else {
-        // console.log("router", route.meta.id);
         router.push(item.path);
         state.nowPath = item.id;
-        console.log("click", state.nowPath);
+        // console.log("click", state.nowPath);
       }
     }
 
+    // 버튼에 마우스 오버 & 아웃
     function btnCursor(event) {
       state.activeMenu = event === "enter" ? true : false;
       //   console.log("event", event, state.activeMenu, itemList);
@@ -65,7 +76,33 @@ export default {
     function scrollTop() {
       window.scrollTo(0, 0);
     }
+
+    // 초기 스타일 적용
+    // onMounted(() => {
+    //   import("@/css/navButton/" + route.meta.id + ".scss");
+    // });
+    // 라우터 전환 시 SCSS 파일을 동적으로 import하고 스타일을 적용
+    // onBeforeRouteUpdate((to) => {
+    // if (to.meta.id !== "windowsXP") return;
+    // import("@/css/navButton/" + to.meta.id + ".scss");
+    // .then((module) => {
+    //   module.default.apply();
+    //   next();
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    //   next();
+    // });
+    // });
+
+    // 컴포넌트를 떠날 때 SCSS 스타일을 해제
+    // onBeforeRouteLeave((to, from, next) => {
+    // SCSS 스타일을 해제하는 로직을 여기에 작성
+    // next();
+    // });
+
     return {
+      clickMore,
       clickBtn,
       btnCursor,
       scrollTop,
@@ -77,103 +114,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.topBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 10;
-
-  .menulist {
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    width: 180px;
-    background-color: #efe8df;
-    box-shadow: 0 0 8px rgba(101, 88, 78, 0.8);
-    color: #64574d;
-    border: 1px solid #64574d;
-    border-radius: 8px;
-    overflow: hidden;
-    opacity: 0;
-    transition: 0.2s ease-in-out;
-    &.active {
-      opacity: 1;
-    }
-    .menulist-item {
-      padding: 4px 8px;
-      width: 100%;
-      position: relative;
-      .text {
-        text-align: right;
-      }
-      .now {
-        position: absolute;
-        top: 50%;
-        left: 8px;
-        transform: translateY(-50%);
-      }
-      &:hover {
-        cursor: pointer;
-        background-color: #64574d;
-        color: #efe8df;
-      }
-    }
-  }
-
-  .scrollToTop {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    font-size: 35px;
-    padding: 5px 8px;
-    border: 1px solid #64574d;
-    box-shadow: 0 0 8px rgba(101, 88, 78, 0.8);
-    background-color: #efe8df;
-    color: #64574d;
-    transform: rotate(-90deg);
-    transition: all 0.5s;
-    position: relative;
-    .dot {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 4px;
-      height: 4px;
-      border-radius: 100%;
-      background-color: #64574d;
-      &:nth-child(1) {
-        left: 30%;
-      }
-      &:nth-child(3) {
-        left: 70%;
-      }
-    }
-    &.active {
-      transform: rotate(0deg);
-    }
-  }
-  .btnText {
-    font-size: 16px;
-    color: #64574d;
-    padding-right: 10px;
-    vertical-align: bottom;
-    opacity: 0;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-  }
-  &:hover {
-    .scrollToTop {
-      cursor: pointer;
-    }
-    .btnText {
-      opacity: 1;
-    }
-  }
-}
+@import "@/css/navButton/magazine.scss";
 </style>

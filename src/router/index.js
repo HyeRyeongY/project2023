@@ -17,7 +17,7 @@ const routes = [
       {
         path: "/windowsXP",
         name: "windowsXP",
-        component: () => import("../views/windowsXP/Index.vue"),
+        component: () => import("../views/windowsXp/Index.vue"),
         meta: { id: "windowsXP", text: "윈도우 XP" },
       },
       {
