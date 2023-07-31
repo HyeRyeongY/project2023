@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 // import Default from "@/components/default/Index.vue";
-import Atype from "@/layout/Atype"; // Atype
+import Atype from "@/layout/Atype"; // Atype (magazine)
+import Btype from "@/layout/Btype"; // Btype (windowsXP)
 
 const routes = [
   {
@@ -15,16 +16,25 @@ const routes = [
         meta: { id: "magazine", text: "잡지" },
       },
       {
-        path: "/windowsXP",
-        name: "windowsXP",
-        component: () => import("../views/windowsXp/Index.vue"),
-        meta: { id: "windowsXP", text: "윈도우 XP" },
-      },
-      {
         path: "/typography",
         name: "typography",
         component: () => import("../views/typography/Index.vue"),
         meta: { id: "typography", text: "타이포그래피" },
+      },
+    ],
+  },
+  {
+    path: "/",
+    name: "Btype",
+    component: Btype,
+    // component: () => import("../views/windowsXp/Index.vue"),
+
+    children: [
+      {
+        path: "/windowsXP",
+        name: "windowsXP",
+        component: () => import("../views/windowsXp/Index.vue"),
+        meta: { id: "windowsXP", text: "윈도우 XP" },
       },
     ],
   },

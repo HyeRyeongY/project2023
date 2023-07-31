@@ -12,11 +12,6 @@
         <div class="icon-text">{{ icon.text }}</div>
       </li>
     </ul>
-    <section class="taskBar">
-      <div class="start">
-        <img src="@/assets/images/windowsXP/wXPLogo.png" class="start-logo" />시작
-      </div>
-    </section>
   </div>
 </template>
 <script>
@@ -92,55 +87,6 @@ ul {
   .icon-text {
     color: #ffffff;
     text-shadow: 1px 2px 3px rgb(0, 0, 0);
-  }
-}
-.taskBar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  min-height: 50px;
-  background: rgb(36, 94, 220);
-  background: linear-gradient(
-    0deg,
-    rgba(36, 94, 220, 1) 69%,
-    rgba(36, 106, 220, 1) 81%,
-    rgba(36, 128, 220, 1) 88%,
-    rgba(36, 145, 220, 1) 92%,
-    rgba(36, 141, 220, 1) 94%,
-    rgb(67, 100, 138) 97%
-  );
-  .start {
-    font-family: "NeoDunggeunmoPro-Regular";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    // min-width: 100px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0 20px;
-    border-radius: 0 10px 10px 0;
-    background: rgb(69, 163, 70);
-    background: linear-gradient(
-      90deg,
-      rgba(69, 163, 70, 1) 0%,
-      rgba(143, 198, 134, 1) 5%,
-      rgba(73, 168, 73, 1) 16%,
-      rgba(73, 168, 73, 1) 92%,
-      rgba(25, 107, 32, 1) 100%
-    );
-    font-size: 24px;
-    // letter-spacing: 4px;
-    color: #ffffff;
-    text-shadow: 1px 2px 3px #000;
-    .start-logo {
-      height: 60%;
-      filter: drop-shadow(1px 2px 3px #000);
-    }
   }
 }
 </style>
