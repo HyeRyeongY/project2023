@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 // import Default from "@/components/default/Index.vue";
 import Atype from "@/layout/Atype"; // Atype (magazine)
 import Btype from "@/layout/Btype"; // Btype (windowsXP)
+import Ctype from "@/layout/Ctype"; // Ctype (typography)
 
 const routes = [
   {
@@ -15,12 +16,12 @@ const routes = [
         component: () => import("../views/magazine/Index.vue"),
         meta: { id: "magazine", text: "잡지" },
       },
-      {
-        path: "/typography",
-        name: "typography",
-        component: () => import("../views/typography/Index.vue"),
-        meta: { id: "typography", text: "타이포그래피" },
-      },
+      // {
+      //   path: "/typography",
+      //   name: "typography",
+      //   component: () => import("../views/typography/Index.vue"),
+      //   meta: { id: "typography", text: "타이포그래피" },
+      // },
     ],
   },
   {
@@ -35,6 +36,21 @@ const routes = [
         name: "windowsXP",
         component: () => import("../views/windowsXp/Index.vue"),
         meta: { id: "windowsXP", text: "윈도우 XP" },
+      },
+    ],
+  },
+  {
+    path: "/",
+    name: "Ctype",
+    component: Ctype,
+    // component: () => import("../views/windowsXp/Index.vue"),
+
+    children: [
+      {
+        path: "/typography",
+        name: "typography",
+        component: () => import("../views/typography/Index.vue"),
+        meta: { id: "typography", text: "타이포그래피" },
       },
     ],
   },
