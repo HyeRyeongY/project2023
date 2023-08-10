@@ -5,7 +5,7 @@
         <li v-for="item in chapters" :key="item" class="chapters-item">{{ item.text }}</li>
       </ul>
     </article>
-    <article>
+    <article id="typoMain">
       <section id="hello">
         <div>
           <p>Hello <span>👋</span></p>
@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, onBeforeUnmount, ref } from "vue";
 export default defineComponent({
   setup() {
     const chapters = [
@@ -51,16 +51,28 @@ export default defineComponent({
     const scrollTop = ref(0);
 
     function scrollHandler() {
-      console.log("scrollHandler has been triggered!");
+      let sections = document.querySelectorAll("section"); // 모든 섹션
+      let sectionsTop = []; // 각 섹션 높이
+      sections.forEach((el) => {
+        sectionsTop.push(el.offsetTop);
+      });
+      let main = document.getElementById("typoMain").offsetTop;
+      console.log("scrollHandler!", main, sectionsTop);
     }
 
     onMounted(() => {
-      document?.getElementById("typography")?.addEventListener("scroll", scrollHandler);
+      document.addEventListener("scroll", scrollHandler);
+      console.log("mounted", document);
+    });
+
+    onBeforeUnmount(() => {
+      document.removeEventListener("scroll", scrollHandler);
     });
 
     return {
       chapters,
       scrollTop,
+      scrollHandler,
     };
   },
 });
