@@ -69,6 +69,19 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/",
+    name: "Ctype",
+    component: Ctype,
+    children: [
+      {
+        path: "/webZine",
+        name: "webZine",
+        component: () => import("../views/webZine/Index.vue"),
+        meta: { id: "webZine", text: "웹진" },
+      },
+    ],
+  },
 
   // {
   //   path: "/:title", // 이런 식으로 작성하면 동적 라우팅이 가능함 예) $route.params.title
