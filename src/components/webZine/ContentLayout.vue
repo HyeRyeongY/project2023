@@ -1,4 +1,5 @@
 <template>
+  <div>{{ content }}</div>
   <ul class="content_list">
     <li
       v-for="(item, idx) in contentsList"
@@ -18,15 +19,16 @@
   </ul>
 </template>
 <script>
-import contents from "./data/contents.json";
 import { onMounted } from "vue";
 export default {
+  props: {
+    content: String,
+  },
   setup() {
-    let contentsList = contents;
+    let contentsList;
     onMounted(() => {
-      // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
-      // this.setContent();
-      console.log("meta::", this.$route);
+      contentsList = this.content;
+      console.log("ContentLayout:Mounted::", contentsList, this.content);
     });
     return {
       contentsList,

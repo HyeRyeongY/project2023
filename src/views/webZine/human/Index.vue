@@ -1,35 +1,24 @@
 <template>
-  <ul class="content_list">
-    <li
-      v-for="(item, idx) in contentsList"
-      :key="idx"
-      class="content_list_item"
-    >
-      <h1 class="content_title">
-        <div>{{ idx + 1 }}</div>
-        {{ item.title }}
-      </h1>
-      <h3 class="content_writer">{{ item.writer }}</h3>
-      <img
-        :src="require(`@/assets/images/webZine/img1_1.jpg`)"
-        alt="대표이미지"
-      />
-    </li>
-  </ul>
+  <h1>사람</h1>
+  <ContentLayout :content="contentsList" />
 </template>
 <script>
-import contents from "./data/contents.json";
+import ContentLayout from "@/components/webZine/ContentLayout.vue";
 import { onMounted } from "vue";
+import contents from "../data/contents.json";
 export default {
   setup() {
-    let contentsList = contents;
+    function setContent() {
+      this.contentsList = contents;
+    }
     onMounted(() => {
       // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
-      // this.setContent();
-      console.log("meta::", this.$route);
+      this.setContent();
+      console.log("meta::", this.$router.meta);
     });
     return {
-      contentsList,
+      setContent,
+      ContentLayout,
     };
   },
 };
