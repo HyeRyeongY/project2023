@@ -1,11 +1,17 @@
 import webZine from "@/layout/webZine"; // webZine (webZine)
 
 const webZineRouter = {
-  path: "/webZine",
-  name: "webZine",
+  path: "/",
+  name: "",
   component: webZine,
   //   meta: {id: 'webZine', title: '모니터링' },
   children: [
+    {
+      path: "/webZine",
+      name: "webZine",
+      component: () => import("@/views/webZine/Index.vue"),
+      meta: { id: "webZine", text: "웹진" },
+    },
     {
       path: "/webZine/human",
       name: "human",

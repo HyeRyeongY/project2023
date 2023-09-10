@@ -1,25 +1,23 @@
 <template>
-  <h1>사람</h1>
-  <ContentLayout :content="contentsList" />
+  <ContentLayout :data="contentsList" />
 </template>
 <script>
 import ContentLayout from "@/components/webZine/ContentLayout.vue";
 import { onMounted } from "vue";
+import { useRoute } from "vue-router";
 import contents from "../data/contents.json";
 export default {
   setup() {
+    const route = useRoute();
     function setContent() {
       this.contentsList = contents;
     }
     onMounted(() => {
       // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
-      this.setContent();
-      console.log("meta::", this.$router.meta);
+      // this.setContent();
+      // console.log("meta::", this.$router.meta);
     });
-    return {
-      setContent,
-      ContentLayout,
-    };
+    return { route, setContent, ContentLayout };
   },
 };
 </script>
@@ -46,9 +44,6 @@ li {
 img {
   display: block;
   width: 100%;
-}
-* {
-  font-family: "Josefin Sans", sans-serif;
 }
 .content_list {
   display: grid;

@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Atype from "@/layout/Atype"; // Atype (magazine)
 import Btype from "@/layout/Btype"; // Btype (windowsXP)
 import Ctype from "@/layout/Ctype"; // Ctype (typography)
-import webZine from "@/layout/webZine"; // webZine (webZine)
+// import webZine from "@/layout/webZine"; // webZine (webZine)
 import webZineRouter from "./modules/webZine";
 
 const routes = [
@@ -67,33 +67,35 @@ const routes = [
       },
     ],
   },
-  {
-    path: "/",
-    name: "webZine",
-    component: webZine,
-    // children: [
-    //   {
-    //     path: "/webZine",
-    //     name: "webZine",
-    //     component: () => import("../views/webZine/Index.vue"),
-    //     meta: { id: "webZine", text: "웹진" },
-    //     childeren: [
-    //       {
-    //         path: "/webZine/human",
-    //         name: "human",
-    //         component: () => import("../views/webZine/human/Index.vue"),
-    //         meta: { id: "human", text: "사람" },
-    //       },
-    //       {
-    //         path: "/webZine/space",
-    //         name: "space",
-    //         component: () => import("../views/webZine/space/Index.vue"),
-    //         meta: { id: "space", text: "공간" },
-    //       },
-    //     ],
-    //   },
-    // ],
-  },
+  // {
+  //   path: "/webZine",
+  //   name: "webZine",
+  //   // component: webZine,
+  //   component: () => import("../views/webZine/Index.vue"),
+  //   meta: { id: "webZine", text: "웹진" },
+  // children: [
+  //   {
+  //     path: "/webZine",
+  //     name: "webZine",
+  //     component: () => import("../views/webZine/Index.vue"),
+  //     meta: { id: "webZine", text: "웹진" },
+  // childeren: [
+  //       {
+  //         path: "/webZine/human",
+  //         name: "human",
+  //         component: () => import("../views/webZine/human/Index.vue"),
+  //         meta: { id: "human", text: "사람" },
+  //       },
+  //       {
+  //         path: "/webZine/space",
+  //         name: "space",
+  //         component: () => import("../views/webZine/space/Index.vue"),
+  //         meta: { id: "space", text: "공간" },
+  //       },
+  //     ],
+  // },
+  // ],
+  // },
   webZineRouter,
 
   // {

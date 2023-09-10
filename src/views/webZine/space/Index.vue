@@ -1,23 +1,23 @@
 <template>
-  <h1>공간</h1>
-  <ContentLayout :content="contentsList" />
+  <ContentLayout :data="contentsList" />
 </template>
 <script>
 import ContentLayout from "@/components/webZine/ContentLayout.vue";
-import { onMounted } from "vue";
-import contents from "../data/contents.json";
+// import { onBeforeMount } from "vue";
+import contents from "@/data/webZine/contents.json";
 export default {
   setup() {
-    let contentsList;
-    function setContent() {
-      contentsList = contents;
-    }
-    onMounted(() => {
-      setContent();
-    });
+    let contentsList = contents;
+    // function setContent() {
+    //   console.log("setContent::", contents);
+    //   contentsList = contents;
+    // }
+    // onBeforeMount(() => {
+    //   setContent();
+    // });
     return {
       contentsList,
-      setContent,
+      // setContent,
       ContentLayout,
     };
   },
@@ -46,9 +46,6 @@ li {
 img {
   display: block;
   width: 100%;
-}
-* {
-  font-family: "Josefin Sans", sans-serif;
 }
 .content_list {
   display: grid;
