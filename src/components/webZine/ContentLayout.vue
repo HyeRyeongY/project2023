@@ -1,13 +1,19 @@
 <template>
-  <h1>{{ route.meta.text }}</h1>
+  <header class="contents_top">
+    <Arrow deg="180" @clickArrow="clickArrow" />
+    <h1>{{ pageTitle }}</h1>
+  </header>
   <ul class="content_list">
-    <li v-for="(item, idx) in contentsList" :key="idx" class="content_list_item">
+    <li v-for="(item, idx) in data" :key="idx" class="content_list_item">
       <h1 class="content_title">
         <div>{{ idx + 1 }}</div>
         {{ item.title }}
       </h1>
       <h3 class="content_writer">{{ item.writer }}</h3>
-      <img :src="require(`@/assets/images/webZine/img1_1.jpg`)" alt="대표이미지" />
+      <img
+        :src="require(`@/assets/images/webZine/img1_1.jpg`)"
+        alt="대표이미지"
+      />
     </li>
   </ul>
 </template>
@@ -15,20 +21,38 @@
 // import { onMounted } from "vue";
 // import contents from "@/data/webZine/contents.json";
 
-import { toRef } from "vue";
+import { useRouter } from "vue-router";
+// import { toRef } from "vue";
 export default {
+  name: "ContentsList",
   props: {
-    data: Array,
+    data: {
+      type: Array,
+      required: true, // 필수로 넣어야함
+      default() {
+        return [];
+      },
+    },
+    pageTitle: {
+      type: String,
+      required: false, // 필수가 아님
+      default: "",
+    },
   },
-  setup(props) {
-    const contentsList = toRef(props, "data");
+  setup() {
+    let router = useRouter();
+    function clickArrow() {
+      router.push("/webZine");
+    }
     return {
-      contentsList,
+      clickArrow,
     };
   },
 };
 </script>
 <style lang="scss">
+$background_color: #f5f5f5;
+$text_color: #333;
 body {
   margin: 0;
   padding: 0;
@@ -38,7 +62,12 @@ body {
 ::-webkit-scrollbar {
   width: 0px;
 }
-p {
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
 }
 ul,
@@ -54,6 +83,12 @@ img {
 }
 * {
   font-family: "Josefin Sans", sans-serif;
+}
+.contents_top {
+  display: flex;
+
+  align-items: center;
+  padding: 20px;
 }
 .content_list {
   display: grid;

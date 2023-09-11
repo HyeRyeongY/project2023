@@ -1,7 +1,16 @@
 <template>
   <ul class="menu_container">
-    <li v-for="menu in menuList" :key="menu.menuCd" class="menu_item" @click="clickMenu(menu)">
-      <section class="menu_top">
+    <li
+      v-for="menu in menuList"
+      :key="menu.menuCd"
+      class="menu_item"
+      @click="clickMenu(menu)"
+    >
+      <section
+        class="menu_top"
+        @mouseover="arrowHover = true"
+        @mouseleave="arrowHover = false"
+      >
         <div class="menu_title">
           <h1>{{ menu.text }}</h1>
           <p>{{ `[${menu.menuCd}]` }}</p>
@@ -24,6 +33,7 @@ export default {
   setup() {
     const router = useRouter();
     let contentsList = contents;
+    let arrowHover;
     function clickMenu(menu) {
       // console.log("clickMenu::", "/webZine" + menu.path);
       router.push("/webZine" + menu.path);
@@ -31,7 +41,8 @@ export default {
     return {
       contentsList,
       menuList,
-      clickMenu, // 메뉴 클릭
+      clickMenu,
+      arrowHover, // 메뉴 클릭
     };
   },
 };

@@ -1,23 +1,18 @@
 <template>
-  <ContentLayout :data="contentsList" />
+  <ContentLayout :data="contentsList" :pageTitle="route.meta.text" />
 </template>
 <script>
-import ContentLayout from "@/components/webZine/ContentLayout.vue";
-import { onMounted } from "vue";
+// import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import contents from "../data/contents.json";
 export default {
   setup() {
     const route = useRoute();
-    function setContent() {
-      this.contentsList = contents;
-    }
-    onMounted(() => {
-      // DOM이 마운트 되었을 때 이벤트 핸들러를 등록한다.
-      // this.setContent();
-      // console.log("meta::", this.$router.meta);
-    });
-    return { route, setContent, ContentLayout };
+    const contentsList = contents;
+    return {
+      route,
+      contentsList,
+    };
   },
 };
 </script>
