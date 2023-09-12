@@ -40,20 +40,4 @@ img {
   display: block;
   width: 100%;
 }
-.content_list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-  .content_list_item {
-    .content_title {
-      display: flex;
-      gap: 10px;
-      div {
-        font-size: 1rem;
-        padding-right: 4px;
-      }
-    }
-  }
-}
 </style>

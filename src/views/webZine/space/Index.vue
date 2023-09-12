@@ -1,24 +1,16 @@
 <template>
-  <ContentLayout :data="contentsList" />
+  <ContentLayout :data="contentsList" :pageTitle="route.meta.text" />
 </template>
 <script>
-import ContentLayout from "@/components/webZine/ContentLayout.vue";
-// import { onBeforeMount } from "vue";
-import contents from "@/data/webZine/contents.json";
+import { useRoute } from "vue-router";
+import contents from "../data/contents.json";
 export default {
   setup() {
-    let contentsList = contents;
-    // function setContent() {
-    //   console.log("setContent::", contents);
-    //   contentsList = contents;
-    // }
-    // onBeforeMount(() => {
-    //   setContent();
-    // });
+    const route = useRoute();
+    const contentsList = contents;
     return {
+      route,
       contentsList,
-      // setContent,
-      ContentLayout,
     };
   },
 };
@@ -46,21 +38,5 @@ li {
 img {
   display: block;
   width: 100%;
-}
-.content_list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-  .content_list_item {
-    .content_title {
-      display: flex;
-      gap: 10px;
-      div {
-        font-size: 1rem;
-        padding-right: 4px;
-      }
-    }
-  }
 }
 </style>

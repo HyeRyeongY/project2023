@@ -27,6 +27,7 @@ export default {
 <style lang="scss" scoped>
 $text_color: #333;
 .arrow_icon {
+  display: inline-block;
   position: relative;
   width: 40px;
   height: 40px;

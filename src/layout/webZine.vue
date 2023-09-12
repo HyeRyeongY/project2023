@@ -41,10 +41,7 @@ $text_color: #333;
   box-sizing: border-box;
 }
 .webZine_view {
-  background: $background_color;
   color: $text_color;
-  height: 100vh;
-  width: 100vw;
 
   .logo_container {
     height: $header_height;
@@ -67,10 +64,9 @@ $text_color: #333;
   .main_container {
     position: absolute;
     top: $header_height;
+    background: $background_color;
     width: 100%;
-    // left: 50%;
-    // transform: translateX(-50%);
-    // width: calc(100% - 100px);
+    min-height: 100vh;
   }
   footer {
     height: 100px;

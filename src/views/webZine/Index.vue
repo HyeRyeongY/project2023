@@ -18,7 +18,10 @@
         <div class="menu_arrow"><span></span><span></span><span></span></div>
       </section>
       <div class="img_container">
-        <img :src="require(`@/assets/images/webZine/${menu.img}`)" alt="" />
+        <img
+          :src="require(`@/assets/images/webZine/${menu.img}`)"
+          alt="메뉴이미지"
+        />
       </div>
       <div class="menu_disc">{{ menu.disc }}</div>
     </li>
@@ -79,22 +82,6 @@ img {
   display: block;
   width: 100%;
 }
-.content_list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-  .content_list_item {
-    .content_title {
-      display: flex;
-      gap: 10px;
-      div {
-        font-size: 1rem;
-        padding-right: 4px;
-      }
-    }
-  }
-}
 .menu_container {
   width: 100%;
   height: calc(100vh - $header_height);
@@ -149,24 +136,9 @@ img {
     }
   }
   .img_container {
-    position: relative;
-    &::after {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background: #0077ff88;
-      opacity: 0;
-      background-blend-mode: hue;
-
-      transition: all 0.4s ease-in-out;
-      // filter: sepia(100%) contrast(150%) invert(10%) hue-rotate(134deg);
-    }
-
     img {
       filter: grayscale(100%);
+      transition: all 0.4s ease-in-out 0.1s;
     }
   }
   .menu_disc {
@@ -188,12 +160,8 @@ img {
       }
     }
     .img_container {
-      &::after {
-        opacity: 1;
-        width: 100%;
-      }
       img {
-        filter: grayscale(100%) invert(10%) contrast(1.5);
+        filter: grayscale(0%);
       }
     }
   }
