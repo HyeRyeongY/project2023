@@ -1,7 +1,5 @@
 [
-  { "id": "scrollTop", "text": "scroll to top" },
   { "id": "magazine", "text": "잡지", "path": "/magazine" },
   { "id": "windowsXP", "text": "윈도우 XP", "path": "/windowsXP" },
-  { "id": "typography", "text": "타이포그래피", "path": "/typography" },
   { "id": "animate", "text": "애니메이션", "path": "/animate" }
 ]

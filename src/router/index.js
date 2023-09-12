@@ -10,33 +10,30 @@ const routes = [
   {
     path: "/",
     name: "Main",
+    redirect: "webZine", // 메인 화면
+  },
+  {
+    path: "/",
+    name: "magazine",
     component: Atype,
     children: [
       {
-        path: "",
+        path: "/magazine",
         name: "Magazine",
-        component: () => import("../views/magazine/Index.vue"),
+        component: () => import("@/views/magazine/Index.vue"),
         meta: { id: "magazine", text: "잡지" },
       },
-      // {
-      //   path: "/typography",
-      //   name: "typography",
-      //   component: () => import("../views/typography/Index.vue"),
-      //   meta: { id: "typography", text: "타이포그래피" },
-      // },
     ],
   },
   {
     path: "/",
     name: "Btype",
     component: Btype,
-    // component: () => import("../views/windowsXp/Index.vue"),
-
     children: [
       {
         path: "/windowsXP",
         name: "windowsXP",
-        component: () => import("../views/windowsXP/Index.vue"),
+        component: () => import("@/views/windowsXP/Index.vue"),
         meta: { id: "windowsXP", text: "윈도우 XP" },
       },
     ],
@@ -49,7 +46,7 @@ const routes = [
       {
         path: "/typography",
         name: "typography",
-        component: () => import("../views/typography/Index.vue"),
+        component: () => import("@/views/typography/Index.vue"),
         meta: { id: "typography", text: "타이포그래피" },
       },
     ],
@@ -62,41 +59,12 @@ const routes = [
       {
         path: "/animate",
         name: "animate",
-        component: () => import("../views/animate/Index.vue"),
+        component: () => import("@/views/animate/Index.vue"),
         meta: { id: "animate", text: "애니메이션" },
       },
     ],
   },
-  // {
-  //   path: "/webZine",
-  //   name: "webZine",
-  //   // component: webZine,
-  //   component: () => import("../views/webZine/Index.vue"),
-  //   meta: { id: "webZine", text: "웹진" },
-  // children: [
-  //   {
-  //     path: "/webZine",
-  //     name: "webZine",
-  //     component: () => import("../views/webZine/Index.vue"),
-  //     meta: { id: "webZine", text: "웹진" },
-  // childeren: [
-  //       {
-  //         path: "/webZine/human",
-  //         name: "human",
-  //         component: () => import("../views/webZine/human/Index.vue"),
-  //         meta: { id: "human", text: "사람" },
-  //       },
-  //       {
-  //         path: "/webZine/space",
-  //         name: "space",
-  //         component: () => import("../views/webZine/space/Index.vue"),
-  //         meta: { id: "space", text: "공간" },
-  //       },
-  //     ],
-  // },
-  // ],
-  // },
-  webZineRouter,
+  webZineRouter, // 웹진
 
   // {
   //   path: "/:title", // 이런 식으로 작성하면 동적 라우팅이 가능함 예) $route.params.title
