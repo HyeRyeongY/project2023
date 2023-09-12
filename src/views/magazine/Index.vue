@@ -14,7 +14,10 @@
                 </ul>
               </div>
               <div class="mobile" :class="{ active: useData.mobileMenu }">
-                <div class="button" @click="useData.mobileMenu = !useData.mobileMenu">
+                <div
+                  class="button"
+                  @click="useData.mobileMenu = !useData.mobileMenu"
+                >
                   <span v-for="idx in 3" :key="idx"></span>
                 </div>
 
@@ -37,7 +40,11 @@
         <article class="homeTitle">
           <div class="mainImg">
             <div class="flex">
-              <img :src="require(`@/assets/images/main/home_1.jpg`)" alt="home1" class="home1" />
+              <img
+                :src="require(`@/assets/images/main/home_1.jpg`)"
+                alt="home1"
+                class="home1"
+              />
               <img
                 :src="require(`@/assets/images/main/home_1-1.jpg`)"
                 alt="home1-1"
@@ -56,10 +63,15 @@
           <div class="flex">
             <div class="introduce introduce1">
               <span class="subject">
-                Life is a continuation of learning,<br />and the excitement in it.<br />
+                Life is a continuation of learning,<br />and the excitement in
+                it.<br />
               </span>
             </div>
-            <img :src="require(`@/assets/images/main/home_2.jpg`)" alt="home2" class="home2" />
+            <img
+              :src="require(`@/assets/images/main/home_2.jpg`)"
+              alt="home2"
+              class="home2"
+            />
           </div>
 
           <div class="flex">
@@ -93,7 +105,7 @@
       </section>
 
       <section ref="About" id="About" class="wrap scroll">
-        <div class="flex info">
+        <div class="grid info">
           <div>
             <div class="about">About</div>
             <img
@@ -109,7 +121,11 @@
                 <h2 class="title">{{ item.name }}</h2>
                 <template v-if="item.name !== 'SKILL'">
                   <ul>
-                    <li v-for="(list, idx) in item.list" :key="idx" class="info-list">
+                    <li
+                      v-for="(list, idx) in item.list"
+                      :key="idx"
+                      class="info-list"
+                    >
                       <div class="name">
                         {{ list.id ? list.id : list.period ? list.period : "" }}
                       </div>
@@ -129,7 +145,9 @@
                       <li v-for="(list, idx) in item.list" :key="idx">
                         <ul class="horiz">
                           <li>
-                            <div class="numAnimation" :percent="list.percent">0<span>%</span></div>
+                            <div class="numAnimation" :percent="list.percent">
+                              0<span>%</span>
+                            </div>
                           </li>
                           <li>
                             <div class="lang">{{ list.lang }}</div>
@@ -228,8 +246,10 @@ export default {
   src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
   src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
       format("embedded-opentype"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff") format("woff"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf") format("truetype");
+    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
+      format("woff"),
+    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
+      format("truetype");
 }
 
 body {
@@ -519,10 +539,11 @@ main {
   #About {
     margin: 100px 0px;
     color: #efe8df;
-    .flex {
+    .grid {
       padding: 0px 10px;
-      justify-content: space-evenly;
-      align-items: flex-end;
+      display: grid;
+      grid-template-columns: 1fr 30%;
+      gap: 20px;
     }
     .about {
       font-family: "Italiana", serif;
@@ -538,6 +559,7 @@ main {
       }
       .infoText {
         // margin-top: 30px;
+        width: 100%;
         padding: 0px 20px;
         .list {
           margin-bottom: 20px;
@@ -551,10 +573,11 @@ main {
             letter-spacing: 1.2px;
           }
           ul {
+            width: 100%;
             margin-top: 10px;
             .info-list {
               display: grid;
-              grid-template-columns: 150px 1fr;
+              grid-template-columns: 180px 1fr;
               padding-top: 4px;
               &:first-child {
                 padding-top: 0;
@@ -764,19 +787,21 @@ textarea::placeholder {
     margin: 0px;
     margin-bottom: 100px;
   }
-  main #About > .flex {
-    flex-direction: column;
-    align-items: center;
+  main #About > .grid {
+    grid-template-columns: 1fr;
   }
   main #About .info .infoText .list .title {
     text-align: center;
   }
-  main #About .info .infoText .list ul li {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    .name {
-      text-align: right;
+  main #About .info .infoText .list ul {
+    width: unset;
+    li {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      .name {
+        text-align: right;
+      }
     }
   }
   main #About .skillGrp {
