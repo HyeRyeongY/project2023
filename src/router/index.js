@@ -7,10 +7,21 @@ import Ctype from "@/layout/Ctype"; // Ctype (typography)
 import webZineRouter from "./modules/webZine";
 
 const routes = [
+  // {
+  // path: "/404",
+  // name: "notFound",
+  // component: NotFound
+  // },
+  {
+    path: "*",
+    redirect: "/magazine",
+    // 아래처럼 바로 NotFound 경로를 매칭해도 됨
+    // component: NotFound
+  },
   {
     path: "/",
     name: "Main",
-    redirect: "webZine", // 메인 화면
+    redirect: "magazine", // 메인 화면
   },
   {
     path: "/",
