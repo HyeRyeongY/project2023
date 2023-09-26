@@ -140,7 +140,6 @@ img {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    border-top: 1px solid #333;
     &:not(:last-child) {
       border-bottom: 1px solid #333;
     }
