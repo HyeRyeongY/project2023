@@ -2,6 +2,10 @@
   <div class="webZine_view">
     <header class="logo_container">
       <div class="logo" @click="router.push('/webZine')">CITYPLAY</div>
+      <div v-if="route.path !== '/webZine'">
+        <h1 class="page_title">{{ route.meta.text }}</h1>
+        <p class="page_sub_title">{{ `[${route.meta.id}]` }}</p>
+      </div>
     </header>
     <main class="main_container">
       <router-view></router-view>
@@ -15,11 +19,12 @@
   </div>
 </template>
 <script>
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 export default {
   setup() {
     const router = useRouter();
-    return { router };
+    const route = useRoute();
+    return { router, route };
   },
 };
 </script>
@@ -33,7 +38,7 @@ export default {
   font-style: normal;
 }
 $header_height: 80px;
-$background_color: #f5f5f5;
+$background_color: #f5f5f5dd;
 $text_color: #333;
 
 * {
@@ -46,8 +51,9 @@ $text_color: #333;
   .logo_container {
     height: $header_height;
     width: 100%;
+    padding: 0 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     font-size: 40px;
@@ -59,6 +65,13 @@ $text_color: #333;
     .logo {
       font-family: "Bagel Fat One", cursive;
       cursor: pointer;
+    }
+    .page_title {
+      font-size: 2rem;
+    }
+    .page_sub_title {
+      font-size: 1rem;
+      font-weight: 400;
     }
   }
   .main_container {

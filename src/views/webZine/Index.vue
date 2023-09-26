@@ -14,16 +14,18 @@
         <div class="menu_title">
           <h1>{{ menu.text }}</h1>
           <p>{{ `[${menu.menuCd}]` }}</p>
+
+          <!-- <section class="menu_disc">{{ menu.disc }}</section> -->
         </div>
+
         <div class="menu_arrow"><span></span><span></span><span></span></div>
       </section>
-      <div class="img_container">
-        <img
+      <!-- <div class="img_container">
+      <img
           :src="require(`@/assets/images/webZine/${menu.img}`)"
           alt="메뉴이미지"
         />
-      </div>
-      <div class="menu_disc">{{ menu.disc }}</div>
+      </div> -->
     </li>
   </ul>
 </template>
@@ -106,6 +108,7 @@ img {
   .menu_top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 100%;
     .menu_arrow {
       position: relative;

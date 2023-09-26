@@ -1,14 +1,23 @@
 <template>
   <header class="contents_top">
     <Arrow deg="180" @clickArrow="clickArrow" />
-    <h1 class="page_title">{{ pageTitle }}</h1>
+    <!-- <div>
+      <h1 class="page_title">{{ pageTitle.text }}</h1>
+      <h3>{{ `[${pageTitle.id}]` }}</h3>
+    </div> -->
   </header>
   <ul class="content_list">
-    <li v-for="(item, idx) in data" :key="idx" class="content_list_item">
+    <li
+      v-for="(item, idx) in data"
+      :key="idx"
+      class="content_list_item"
+      @click="clickContent(item)"
+    >
       <!-- <img
         :src="require(`@/assets/images/webZine/noImg.jpg`)"
         alt="대표이미지"
       /> -->
+
       <div class="content_img_container">
         <div class="content_img">
           <object
@@ -22,10 +31,12 @@
           /> -->
         </div>
       </div>
-      <h1 class="content_title">
-        {{ item.title }}
-      </h1>
-      <h3 class="content_writer">{{ item.writer }}</h3>
+      <div class="content_text">
+        <h1 class="content_title">
+          {{ item.title }}
+        </h1>
+        <h3 class="content_writer">{{ item.writer }}</h3>
+      </div>
     </li>
   </ul>
 </template>
@@ -46,18 +57,26 @@ export default {
       },
     },
     pageTitle: {
-      type: String,
+      type: Object,
       required: false, // 필수가 아님
-      default: "",
+      default() {
+        return {};
+      },
     },
   },
   setup() {
     let router = useRouter();
+    // 뒤로가기 클릭
     function clickArrow() {
       router.push("/webZine");
     }
+    // 콘텐츠 클릭
+    function clickContent() {
+      console.log("콘텐츠클릭, ");
+    }
     return {
       clickArrow,
+      clickContent,
     };
   },
 };
@@ -97,10 +116,9 @@ img {
   font-family: "Josefin Sans", sans-serif;
 }
 .contents_top {
-  display: flex;
-  justify-content: space-between;
-  // align-items: center;
-  padding: 20px;
+  position: fixed;
+  top: 100px;
+  left: 20px;
   .page_title {
     display: inline-block;
     width: 100%;
@@ -109,32 +127,39 @@ img {
   }
 }
 .content_list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  // display: grid;
+  // grid-template-columns: repeat(3, 1fr);
   // padding: 20px 120px;
   width: 1200px;
   margin: 0 auto;
   .content_list_item {
-    padding: 0 10px 10px;
+    padding: 20px;
     margin: 20px 0;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    &:not(:nth-child(3n)) {
-      border-right: 1px solid #333;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid #333;
+    &:not(:last-child) {
+      border-bottom: 1px solid #333;
     }
-    .content_title {
-      display: flex;
-      gap: 10px;
-      div {
-        font-size: 1rem;
-        padding-right: 4px;
+    .content_text {
+      .content_title {
+        word-break: keep-all;
+        // display: flex;
+        // gap: 10px;
+        div {
+          font-size: 1rem;
+          padding-right: 4px;
+        }
       }
     }
 
     .content_img_container {
       position: relative;
-      padding-top: 135%; /* 1:1 = 100%, 2:1 = 50%, 1:2 = 200%, 4:3 = 75%, 16:9 = 56.25%  */
+      width: 100%;
+      padding-top: 50%; /* 1:1 = 100%, 2:1 = 50%, 1:2 = 200%, 4:3 = 75%, 16:9 = 56.25%  */
       overflow: hidden;
       .content_img {
         color: #fff;

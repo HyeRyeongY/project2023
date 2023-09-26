@@ -54,6 +54,7 @@ $text_color: #333;
     }
   }
   &:hover {
+    cursor: pointer;
     .active {
       span {
         transform: translate(-80%, -50%) rotate(45deg);

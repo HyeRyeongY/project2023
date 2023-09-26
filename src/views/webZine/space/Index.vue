@@ -1,5 +1,5 @@
 <template>
-  <ContentLayout :data="contentsList" :pageTitle="route.meta.text" />
+  <ContentLayout :data="contentsList" :pageTitle="route.meta" />
 </template>
 <script>
 import { useRoute } from "vue-router";
