@@ -1,4 +1,4 @@
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHashHistory, createRouter } from "vue-router";
 // import Default from "@/components/default/Index.vue";
 import Atype from "@/layout/Atype"; // Atype (magazine)
 import Btype from "@/layout/Btype"; // Btype (windowsXP)
@@ -12,12 +12,12 @@ const routes = [
   // name: "notFound",
   // component: NotFound
   // },
-  {
-    path: "*",
-    redirect: "/magazine",
-    // 아래처럼 바로 NotFound 경로를 매칭해도 됨
-    // component: NotFound
-  },
+  // {
+  //   path: "*",
+  //   redirect: "/magazine",
+  //   // 아래처럼 바로 NotFound 경로를 매칭해도 됨
+  //   // component: NotFound
+  // },
   {
     path: "/",
     name: "Main",
@@ -85,7 +85,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 
