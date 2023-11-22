@@ -1,0 +1,14 @@
+[
+  {
+    "text": "ABOUT",
+    "menuCd": "about",
+    "path": "/about",
+    "img": "img1_1.jpg"
+  },
+  {
+    "text": "CONTACT",
+    "menuCd": "contact",
+    "path": "/contact",
+    "img": "img1_1.jpg"
+  }
+]

@@ -1,39 +1,27 @@
 <template>
   <ul class="menu_container">
-    <li
-      v-for="menu in menuList"
-      :key="menu.menuCd"
-      class="menu_item"
-      @click="clickMenu(menu)"
-    >
-      <section
-        class="menu_top"
-        @mouseover="arrowHover = true"
-        @mouseleave="arrowHover = false"
-      >
+    <li v-for="menu in menuList" :key="menu.menuCd" class="menu_item" @click="clickMenu(menu)">
+      <section class="menu_top" @mouseover="arrowHover = true" @mouseleave="arrowHover = false">
         <div class="menu_title">
-          <h1>{{ menu.text }}</h1>
-          <p>{{ `[${menu.menuCd}]` }}</p>
-
-          <!-- <section class="menu_disc">{{ menu.disc }}</section> -->
+          <h1>{{ menu.menuCd }}</h1>
+          <p>{{ menu.text }}</p>
         </div>
 
         <div class="menu_arrow"><span></span><span></span><span></span></div>
       </section>
-      <!-- <div class="img_container">
-      <img
-          :src="require(`@/assets/images/webZine/${menu.img}`)"
-          alt="메뉴이미지"
-        />
-      </div> -->
+      <div class="img_container">
+        <img :src="require(`@/assets/images/webZine/${menu.img}`)" alt="" />
+      </div>
     </li>
   </ul>
 </template>
 <script>
-import menuList from "@/data/webZine/menu.json";
-import contents from "./data/contents.json";
+/* vue */
 // import { onMounted } from "vue";
 import { useRouter } from "vue-router";
+/* data */
+import menuList from "@/data/webZine/menu.json";
+import contents from "./data/contents.json";
 export default {
   setup() {
     const router = useRouter();
@@ -96,7 +84,7 @@ img {
 .menu_item {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 40px;
   font-size: 2vw;
   display: flex;
   flex-direction: column;

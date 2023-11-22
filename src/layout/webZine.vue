@@ -1,15 +1,8 @@
 <template>
   <div class="webZine_view">
-    <header class="logo_container">
-      <div class="logo" @click="router.push('/webZine')">CITYPLAY</div>
-      <div v-if="route.path !== '/webZine'">
-        <h1 class="page_title">{{ route.meta.text }}</h1>
-        <p class="page_sub_title">{{ `[${route.meta.id}]` }}</p>
-      </div>
-    </header>
+    <Navbar />
     <main class="main_container">
       <router-view></router-view>
-
       <footer>
         <!-- <v-icon>mdi-instagram</v-icon> -->
         <div>COPYRIGHTⓒ2023 by CITYPLAY. ALL RIGHTS RESERVED</div>
@@ -20,11 +13,16 @@
 </template>
 <script>
 import { useRouter, useRoute } from "vue-router";
+import { onMounted } from "vue";
+import Navbar from "@/layout/components/webZine/MenuBar.vue";
 export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
-    return { router, route };
+    onMounted(() => {
+      console.log("router", route);
+    });
+    return { router, Navbar };
   },
 };
 </script>
@@ -37,9 +35,7 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-$header_height: 80px;
-$background_color: #f5f5f5dd;
-$text_color: #333;
+@import "@/assets/style/webZine/variables.scss";
 
 * {
   font-family: "SUIT-Regular";
@@ -48,32 +44,6 @@ $text_color: #333;
 .webZine_view {
   color: $text_color;
 
-  .logo_container {
-    height: $header_height;
-    width: 100%;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    font-size: 40px;
-    font-weight: 500;
-    z-index: 99;
-    border-bottom: 1px solid $text_color;
-    // backdrop-filter: blur(10px);
-    background: $background_color;
-    .logo {
-      font-family: "Bagel Fat One", cursive;
-      cursor: pointer;
-    }
-    .page_title {
-      font-size: 2rem;
-    }
-    .page_sub_title {
-      font-size: 1rem;
-      font-weight: 400;
-    }
-  }
   .main_container {
     position: absolute;
     top: $header_height;

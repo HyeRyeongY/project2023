@@ -13,10 +13,16 @@ const webZineRouter = {
       meta: { id: "webZine", text: "웹진" },
     },
     {
-      path: "/webZine/human",
-      name: "human",
-      component: () => import("@/views/webZine/human/Index.vue"),
-      meta: { id: "human", text: "사람" },
+      path: "/webZine/life",
+      name: "life",
+      component: () => import("@/views/webZine/life/Index.vue"),
+      meta: { id: "life", text: "일상" },
+    },
+    {
+      path: "/webZine/work",
+      name: "work",
+      component: () => import("@/views/webZine/work/Index.vue"),
+      meta: { id: "human", text: "일" },
     },
     {
       path: "/webZine/space",

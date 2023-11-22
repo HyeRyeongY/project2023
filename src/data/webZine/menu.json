@@ -1,16 +1,20 @@
 [
   {
-    "menuCd": "human",
-    "text": "사람",
-    "path": "/human",
-    "img": "img1_1.jpg",
-    "disc": "지역의 삶이 스며든 사람들의 이야기를 들어보아요"
+    "menuCd": "LIFE",
+    "text": "일상",
+    "path": "/life",
+    "img": "img1_1.jpg"
   },
   {
-    "menuCd": "space",
+    "menuCd": "WORK",
+    "text": "일",
+    "path": "/work",
+    "img": "img1_1.jpg"
+  },
+  {
+    "menuCd": "SPACE",
     "text": "공간",
     "path": "/space",
-    "img": "img1_1.jpg",
-    "disc": "지역의 짙은 특성이 묻어난 공간을 둘러보아요"
+    "img": "img1_1.jpg"
   }
 ]
