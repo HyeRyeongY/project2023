@@ -7,40 +7,48 @@
     <section class="nav_menu">
       <!-- 메뉴 -->
       <ul>
-        <li v-for="menu in infoMenu" :key="menu.menuCd" class="menu_list">
+        <li v-for="menu in menuList" :key="menu.menuCd" class="menu_list">
           {{ menu.text }}
         </li>
       </ul>
     </section>
   </header>
 </template>
+
 <script>
 /* vue */
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
-/* data */
-import infoMenu from "@/data/webZine/infoMenu.json";
 
 export default {
-  setup() {
+  props: {
+    data: [],
+  },
+  setup(props) {
     let router = useRouter();
     let route = useRoute();
     onMounted(() => {
       console.log("navbar::", router, route);
     });
-    return { infoMenu };
+    const menuList = computed(() => {
+      console.log("menuList::", props.data);
+      return props.data;
+    });
+    return { menuList };
   },
 };
 </script>
 <style lang="scss" scoped>
 @import "@/assets/style/webZine/variables.scss";
 .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: $header_height;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   padding: 0 20px;
   font-size: 40px;
   font-weight: 500;

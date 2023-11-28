@@ -41,9 +41,7 @@ export default {
 };
 </script>
 <style lang="scss">
-$header_height: 80px;
-$background_color: #f5f5f5;
-$text_color: #333;
+@import "@/assets/style/webZine/variables.scss";
 body {
   margin: 0;
   padding: 0;
@@ -96,8 +94,6 @@ img {
   .menu_top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 100%;
     .menu_arrow {
       position: relative;
       width: 40px;

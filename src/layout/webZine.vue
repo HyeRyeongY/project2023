@@ -1,6 +1,6 @@
 <template>
   <div class="webZine_view">
-    <Navbar />
+    <MenuBar :data="menuData" />
     <main class="main_container">
       <router-view></router-view>
       <footer>
@@ -11,18 +11,34 @@
     <!-- <Footer /> -->
   </div>
 </template>
+
+<script setup></script>
 <script>
+/* vue */
 import { useRouter, useRoute } from "vue-router";
-import { onMounted } from "vue";
-import Navbar from "@/layout/components/webZine/MenuBar.vue";
+import { onMounted, watch } from "vue";
+
+import MenuBar from "./components/webZine/MenuBar.vue";
+/* data */
+import infoMenu from "@/data/webZine/infoMenu.json";
+import menu from "@/data/webZine/menu.json";
 export default {
+  components: { MenuBar },
   setup() {
     const router = useRouter();
     const route = useRoute();
+    let menuData = infoMenu;
     onMounted(() => {
-      console.log("router", route);
+      console.log("router", route.path);
     });
-    return { router, Navbar };
+    watch(
+      () => route.path,
+      (now) => {
+        menuData = now !== "/webZine" ? menu : infoMenu;
+        console.log("watch:::", route.path, menuData);
+      }
+    );
+    return { router, menuData, MenuBar };
   },
 };
 </script>
@@ -43,6 +59,7 @@ export default {
 }
 .webZine_view {
   color: $text_color;
+  position: relative;
 
   .main_container {
     position: absolute;
