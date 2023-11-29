@@ -12,13 +12,14 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import MenuBar from "./components/webZine/MenuBar.vue";
+</script>
 <script>
 /* vue */
 import { useRouter, useRoute } from "vue-router";
 import { onMounted, watch } from "vue";
 
-import MenuBar from "./components/webZine/MenuBar.vue";
 /* data */
 import infoMenu from "@/data/webZine/infoMenu.json";
 import menu from "@/data/webZine/menu.json";
@@ -38,7 +39,7 @@ export default {
         console.log("watch:::", route.path, menuData);
       }
     );
-    return { router, menuData, MenuBar };
+    return { router, menuData };
   },
 };
 </script>

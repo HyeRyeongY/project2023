@@ -1,9 +1,18 @@
 <template>
   <ul class="menu_container">
-    <li v-for="menu in menuList" :key="menu.menuCd" class="menu_item" @click="clickMenu(menu)">
-      <section class="menu_top" @mouseover="arrowHover = true" @mouseleave="arrowHover = false">
+    <li
+      v-for="menu in menuList"
+      :key="menu.menuCd"
+      class="menu_item"
+      @click="clickMenu(menu)"
+    >
+      <section
+        class="menu_top"
+        @mouseover="arrowHover = true"
+        @mouseleave="arrowHover = false"
+      >
         <div class="menu_title">
-          <h1>{{ menu.menuCd }}</h1>
+          <div class="eng">{{ menu.menuCd }}</div>
           <p>{{ menu.text }}</p>
         </div>
 
@@ -11,6 +20,17 @@
       </section>
       <div class="img_container">
         <img :src="require(`@/assets/images/webZine/${menu.img}`)" alt="" />
+        <!-- <div class="content_img_container">
+            <div class="content_img">
+              <object :data="require(`@/assets/icon/svg/noImg.svg`)" class="no_img"></object> -->
+
+        <!-- <svg
+            :src="require(`@/assets/icon/svg/noImg.svg`)"
+            alt="이미지없음"
+            class="no_img"
+          /> -->
+        <!-- </div>
+          </div> -->
       </div>
     </li>
   </ul>
@@ -82,11 +102,12 @@ img {
 .menu_item {
   width: 100%;
   height: 100%;
-  padding: 40px;
+  padding: 40px 60px 60px;
   font-size: 2vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 40px;
   cursor: pointer;
   &:not(:last-child) {
     border-right: 1px solid $text_color;
@@ -123,10 +144,11 @@ img {
     }
   }
   .img_container {
-    img {
-      filter: grayscale(100%);
-      transition: all 0.4s ease-in-out 0.1s;
-    }
+    overflow: hidden;
+    // img {
+    //   filter: grayscale(100%);
+    //   transition: all 0.4s ease-in-out 0.1s;
+    // }
   }
   .menu_disc {
     height: 100%;
@@ -146,11 +168,11 @@ img {
         }
       }
     }
-    .img_container {
-      img {
-        filter: grayscale(0%);
-      }
-    }
+    // .img_container {
+    //   img {
+    //     filter: grayscale(0%);
+    //   }
+    // }
   }
 }
 </style>

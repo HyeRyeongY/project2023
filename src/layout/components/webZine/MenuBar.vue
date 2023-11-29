@@ -2,7 +2,9 @@
   <header class="navbar">
     <section class="logo_container">
       <!-- 로고 이미지 -->
-      <div class="logo" @click="router.push('/webZine')">CITYPLAY</div>
+      <!-- <div class="logo" @click="router.push('/webZine')">CITYPLAY</div> -->
+      <SvgIcon :icon="'cityplay_logo'" class="logo_img" />
+      <!-- <object :data="require(`@/assets/icon/svg/cityplay_logo.svg`)"></object> -->
     </section>
     <section class="nav_menu">
       <!-- 메뉴 -->
@@ -14,6 +16,10 @@
     </section>
   </header>
 </template>
+<script setup>
+/* components */
+import SvgIcon from "@/components/webZine/SvgIcon.vue";
+</script>
 
 <script>
 /* vue */
@@ -22,7 +28,9 @@ import { useRouter, useRoute } from "vue-router";
 
 export default {
   props: {
-    data: [],
+    data: {
+      type: Array,
+    },
   },
   setup(props) {
     let router = useRouter();
@@ -34,7 +42,7 @@ export default {
       console.log("menuList::", props.data);
       return props.data;
     });
-    return { menuList };
+    return { menuList, router };
   },
 };
 </script>
@@ -55,6 +63,11 @@ export default {
   z-index: 99;
   border-bottom: 1px solid $text_color;
   background: $background_color;
+  .logo_img {
+    width: 200px;
+    color: $primary;
+    cursor: pointer;
+  }
   .nav_menu ul {
     display: flex;
     justify-content: flex-end;

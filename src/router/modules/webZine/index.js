@@ -30,6 +30,18 @@ const webZineRouter = {
       component: () => import("@/views/webZine/space/Index.vue"),
       meta: { id: "space", text: "공간" },
     },
+    {
+      path: "/webZine/about",
+      name: "about",
+      component: () => import("@/views/webZine/about/Index.vue"),
+      meta: { id: "about", text: "어바웃" },
+    },
+    {
+      path: "/webZine/contact",
+      name: "contact",
+      component: () => import("@/views/webZine/contact/Index.vue"),
+      meta: { id: "contact", text: "콘텍트" },
+    },
   ],
 };
 export default webZineRouter;
