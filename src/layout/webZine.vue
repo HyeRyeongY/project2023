@@ -3,10 +3,9 @@
     <MenuBar :data="menuData" />
     <main class="main_container">
       <router-view></router-view>
-      <footer>
-        <!-- <v-icon>mdi-instagram</v-icon> -->
+      <!-- <footer>
         <div>COPYRIGHTⓒ2023 by CITYPLAY. ALL RIGHTS RESERVED</div>
-      </footer>
+      </footer> -->
     </main>
     <!-- <Footer /> -->
   </div>
@@ -67,7 +66,7 @@ export default {
     top: $header_height;
     background: $background_color;
     width: 100%;
-    min-height: 100vh;
+    height: calc(100vh - $header_height);
   }
   footer {
     height: 100px;

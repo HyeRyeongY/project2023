@@ -93,7 +93,7 @@ onMounted(() => {
 function clickContent(item, idx) {
   nowContents.value = item;
   nowIdx.value = idx ? idx : 0;
-  console.log("콘텐츠클릭, ", item, idx, nowContents.value.img, nowIdx.value);
+  // console.log("콘텐츠클릭, ", item, idx, nowContents.value.img, nowIdx.value);
 }
 // InfoMenu 클릭
 function clickInfoMenu(menu) {

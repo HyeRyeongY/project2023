@@ -48,7 +48,7 @@ export default {
     let contentsList = contents;
     let arrowHover;
     function clickMenu(menu) {
-      // console.log("clickMenu::", "/webZine" + menu.path);
+      console.log("clickMenu::", "/webZine" + menu.path);
       router.push("/webZine" + menu.path);
     }
     return {
